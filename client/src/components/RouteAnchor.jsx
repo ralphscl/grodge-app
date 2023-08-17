@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const Logo = ({image, target="/"}) => {
+const RouteAnchor = ({image, target="/"}) => {
     return (
         <a href={target}>
             {image}
@@ -8,9 +8,9 @@ const Logo = ({image, target="/"}) => {
     )
 }
 
-Logo.propTypes = {
+RouteAnchor.propTypes = {
     image: PropTypes.element.isRequired,
     target: PropTypes.string
 };
   
-export default Logo;
+export default RouteAnchor;

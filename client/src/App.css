@@ -1,8 +1,7 @@
-.navbar-links li {
+.navbar-links li a {
     @apply 
     px-4 py-2 
-    font-semibold 
-    text-black-custom
+    font-semibold text-black-custom
     rounded-lg 
     cursor-pointer 
 
@@ -14,5 +13,6 @@
     @apply
     cursor-pointer
     text-black-custom
+
     hover:text-accent-primary
 }
