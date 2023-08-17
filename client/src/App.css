@@ -1,0 +1,18 @@
+.navbar-links li {
+    @apply 
+    px-4 py-2 
+    font-semibold 
+    text-black-custom
+    rounded-lg 
+    cursor-pointer 
+
+    hover:bg-accent-primary
+    hover:text-white-custom;
+}
+
+.navbar-icons svg {
+    @apply
+    cursor-pointer
+    text-black-custom
+    hover:text-accent-primary
+}

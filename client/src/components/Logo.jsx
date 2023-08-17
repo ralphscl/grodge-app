@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 
-const Logo = ({image}) => {
+const Logo = ({image, target="/"}) => {
     return (
-        <a href="/" className="w-4/12">
+        <a href={target}>
             {image}
         </a>
     )
@@ -10,6 +10,7 @@ const Logo = ({image}) => {
 
 Logo.propTypes = {
     image: PropTypes.element.isRequired,
+    target: PropTypes.string
 };
   
 export default Logo;
