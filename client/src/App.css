@@ -1,6 +1,28 @@
-.navbar-links li a {
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    @apply
+    w-full
+    my-2 py-2 px-3
+    border rounded-md;
+}
+
+button {
+    @apply
+    bg-gray-300
+}
+
+button.primary {
+    @apply
+    bg-accent-primary
+    p-2 w-full
+    text-white
+    rounded-2xl
+}
+
+.navbar-links li {
     @apply 
-    px-4 py-2 
+    px-4 py-1 
     font-semibold text-black-custom
     rounded-lg 
     cursor-pointer 
@@ -11,8 +33,9 @@
 
 .navbar-icons svg {
     @apply
-    cursor-pointer
+    w-6 h-6
     text-black-custom
+    cursor-pointer
 
     hover:text-accent-primary
 }

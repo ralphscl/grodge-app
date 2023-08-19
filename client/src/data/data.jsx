@@ -1,15 +1,16 @@
+// User Menu Icons
 import { ReactComponent as ShoppingBag } from '../assets/svg/bag.svg';
 import { ReactComponent as WishList } from '../assets/svg/heart.svg';
 import { ReactComponent as Search } from '../assets/svg/magnifying.svg';
 import { ReactComponent as User } from '../assets/svg/user.svg';
 
+/**
+ * Navigation Link
+ */
 export const navLinks = [
   {
     link: 'Home',
     target: '/'
-  },{
-    link: 'Home',
-    target: '/home'
   },{
     link: 'Shop',
     target: '/shop'
@@ -25,6 +26,9 @@ export const navLinks = [
   },
 ];
 
+/**
+ * User Menu
+ */
 export const userMenu = [
   {
     icon: <Search />
@@ -39,6 +43,22 @@ export const userMenu = [
   },
   {
     icon: <User />,
-    target: 'profile'
+    target: 'login'
   }
+];
+
+/**
+ * Gender Selection
+ */
+export const gender = [
+  {
+    text: 'Male',
+    value: 'male'
+  },{
+    text: 'Female',
+    value: 'female'
+  },{
+    text: 'Other',
+    value: 'other'
+  },
 ];
