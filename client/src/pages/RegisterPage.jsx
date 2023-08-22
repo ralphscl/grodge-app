@@ -1,25 +1,42 @@
+// import { useReducer } from "react";
 import { Link } from "react-router-dom";
+// Data
+import { gender } from "../data/data";
 
 const LoginPage = () => {
+  const userInitial = {
+    name: {
+      first: '',
+      last: '',
+    },
+    gender: '',
+    birthdate: Date(),
+    contact: '',
+    email: '',
+    password: '',
+  };
+
+  console.log(userInitial);
+  console.log(gender)
   return (
     <div className="flex justify-center items-center">
-      <div className="mt-8 grow">
+      <div className="mt-4 grow">
 
-        <h1 className="mb-4 text-4xl text-center">Registration</h1>
+        <h1 className="mb-8 text-4xl text-center">Registration</h1>
         <form className="max-w-4xl mx-auto">
 
           <div className="py-1 flex">
             <div className="w-1/2">
               <h3 className="text-bold">Full Name</h3>
               <div className="flex">
-                <input className="w-1/2" type="text" placeholder="First" />
-                <input className="w-1/2" type="text" placeholder="Last" />
+                <input className="w-1/2 me-1" type="text" placeholder="First" />
+                <input className="w-1/2 me-1" type="text" placeholder="Last" />
               </div>
             </div>
             <div className="w-1/2">
               <h3 className="text-bold">Gender</h3>
               <div>
-                <input type="text" placeholder="Please select an option" />
+                <input className="" type="text" placeholder="Please select an option" />
               </div>
             </div>
           </div>
@@ -27,14 +44,14 @@ const LoginPage = () => {
           <div className="py-1">
             <h3 className="text-bold">Birthday</h3>
             <div className="flex">
-              <input className="w-1/3" type="text" placeholder="Month" />
-              <input className="w-1/3" type="text" placeholder="Day" />
+              <input className="w-1/3 me-1" type="text" placeholder="Month" />
+              <input className="w-1/3 me-1" type="text" placeholder="Day" />
               <input className="w-1/3" type="text" placeholder="Year" />
             </div>
           </div>
 
           <div className="py-1 flex">
-            <div className="w-1/2">
+            <div className="w-1/2 me-1">
               <h3 className="text-bold">Email</h3>
               <input type="email" placeholder="email@domain.com" />
             </div>
@@ -48,7 +65,7 @@ const LoginPage = () => {
           <div className="py-1">
             <h3 className="text-bold">Password</h3>
             <div className="flex">
-              <input className="w-1/2" type="password" placeholder="password" />
+              <input className="w-1/2 me-1" type="password" placeholder="password" />
               <input className="w-1/2" type="password" placeholder="confirm" />
             </div>
           </div>
