@@ -1,38 +1,11 @@
 import { useEffect, useReducer, useState } from "react";
 import { Link } from "react-router-dom";
+// Reducer
+import { userInitial, formReducer } from "../reducers/AccountReducer";
 // Data
 import { gender, month } from "../data/data";
 // Utils
 import { generateYearArray, getDaysOfMonth } from "../utils/DateUtils";
-
-const userInitial = {
-  name: {
-    first: '',
-    last: '',
-  },
-  gender: '',
-  birthdate: {
-    day: null,
-    month: null,
-    year: null,
-  },
-  contact: '',
-  email: '',
-  password: '',
-};
-
-const formReducer = (state, action) => {
-  switch (action.type) {
-    case 'UPDATE_FIELD':
-      return {...state, [action.field]: action.value};
-    case 'UPDATE_NESTED_FIELD':
-      return {...state, [action.parent]: {...state[action.parent], [action.subfield]: action.value}};
-    case 'RESET':
-      return userInitial;
-    default:
-      return state;
-  }
-}
 
 function RegisterPage() {
   const [formData, dispatch] = useReducer(formReducer, userInitial);
@@ -42,16 +15,8 @@ function RegisterPage() {
     setDays(getDaysOfMonth(2023, '00'));
   }, []);
 
-  const handleChange = (field, value) => {
-    dispatch({ type: 'UPDATE_FIELD', field, value });
-  }
-
-  const handleNestedhange = (parent, subfield, value) => {
-    dispatch({ type: 'UPDATE_NESTED_FIELD', parent, subfield, value });
-  }
-
-  const handleMonthChange = (parent, subfield, value) => {
-    dispatch({ type: 'UPDATE_NESTED_FIELD', parent, subfield, value });
+  const handleMonthChange = (field, subfield, value) => {
+    dispatch({ type: 'UPDATE_NESTED_FIELD', field, subfield, value });
     setDays(getDaysOfMonth(2023, '00'));
   }
 
@@ -81,14 +46,14 @@ function RegisterPage() {
                   type="text" 
                   placeholder="First"
                   value={formData.name.first}
-                  onChange={(e) => handleNestedhange('name', 'first', e.target.value)}
+                  onChange={(e) => dispatch({ type: 'UPDATE_NESTED_FIELD', field: 'name', subfield: 'first', value: e.target.value })}
                   className="w-1/2 me-1" 
                 />
                 <input 
                   type="text" 
                   placeholder="Last" 
                   value={formData.name.last}
-                  onChange={(e) => handleNestedhange('name', 'last', e.target.value)}
+                  onChange={(e) => dispatch({ type: 'UPDATE_NESTED_FIELD', field: 'name', subfield: 'last', value: e.target.value })}
                   className="w-1/2 me-1" 
                 />
               </div>
@@ -98,7 +63,7 @@ function RegisterPage() {
               <div>
                 <select
                   value={formData.gender}
-                  onChange={(e) => handleChange('gender', e.target.value)}
+                  onChange={(e) => dispatch({ type: 'UPDATE_FIELD', field: 'gender', value: e.target.value })}
                   className="my-2 py-2"
                 >
                   <option value="">Select an option</option>
@@ -155,7 +120,7 @@ function RegisterPage() {
                 type="email"
                 placeholder="email@domain.com" 
                 value={formData.email}
-                onChange={(e) => handleChange('email', e.target.value)}
+                onChange={(e) => dispatch({ type: 'UPDATE_FIELD', field: 'email', value: e.target.value })}
               />
             </div>
 
@@ -163,9 +128,9 @@ function RegisterPage() {
               <h3 className="text-bold">Contact Number</h3>
               <input 
                 type="text" 
-                placeholder="(+63) 0000 000 000)" 
+                placeholder="(+63) 000 000 0000" 
                 value={formData.contact}
-                onChange={(e) => handleChange('contact', e.target.value)}
+                onChange={(e) => dispatch({ type: 'UPDATE_FIELD', field: 'contact', value: e.target.value })}
                 />
             </div>
           </div>
@@ -178,6 +143,8 @@ function RegisterPage() {
                 type="password" 
                 placeholder="password" 
                 className="w-1/2 me-1"
+                value={formData.password.value}
+                onChange={(e) => dispatch({ type: 'UPDATE_NESTED_FIELD', field: 'password', subfield: 'value', value: e.target.value })}
               />
               <input
                 type="password" 
