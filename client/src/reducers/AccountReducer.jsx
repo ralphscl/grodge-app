@@ -1,8 +1,6 @@
 export const userInitial = {
-  name: {
-    first: '',
-    last: '',
-  },
+  firstName: '',
+  lastName: '',
   gender: '',
   birthdate: {
     day: '',
@@ -11,11 +9,18 @@ export const userInitial = {
   },
   contact: '',
   email: '',
-  password: {
-    value: '',
-    confirm: '',
+  password: '',
+  confirmPassword: '',
+  
+  errors: {
+    firstName: '',
+    lastName: '',
+    gender: '',
+    birthdate: '',
+    contact: '',
+    email: '',
+    password: '',
   },
-  errors: {},
 };
 
 export const formReducer = (state, action) => {

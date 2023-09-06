@@ -6,6 +6,11 @@ import { userInitial, formReducer } from "../reducers/AccountReducer";
 const LoginPage = () => {
   const [formData, dispatch] = useReducer(formReducer, userInitial);
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    dispatch({ type: 'UPDATE_FIELD', field: name, value });
+  }
+
   const handleReset = () => {
     dispatch({ type: 'RESET'});
   }
@@ -13,7 +18,7 @@ const LoginPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     handleReset();
-    console.log(formData);
+    console.log(formData)
   }
 
   return (
@@ -25,14 +30,16 @@ const LoginPage = () => {
           <input 
             type="email" 
             placeholder="your@email.com" 
+            name="email"
             value={formData.email}
-            onChange={(e) => dispatch({ type: 'UPDATE_FIELD', field: 'email', value: e.target.value })}
+            onChange={handleChange}
           />
           <input 
             type="password" 
             placeholder="password" 
-            value={formData.password.value}
-            onChange={(e) => dispatch({ type: 'UPDATE_NESTED_FIELD', field: 'password', subfield: 'value', value: e.target.value })}
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
           />
 
           <button className="primary">Login</button>

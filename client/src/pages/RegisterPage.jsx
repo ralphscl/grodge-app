@@ -15,10 +15,20 @@ function RegisterPage() {
     setDays(getDaysOfMonth(2023, '00'));
   }, []);
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    dispatch({ type: 'UPDATE_FIELD', field: name, value });
+  }
+  
   const handleMonthChange = (field, subfield, value) => {
     dispatch({ type: 'UPDATE_NESTED_FIELD', field, subfield, value });
     setDays(getDaysOfMonth(2023, '00'));
   }
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    dispatch({ type: 'VALIDATE', field: name, value });
+  };
 
   const handleReset = () => {
     dispatch({ type: 'RESET'});
@@ -45,15 +55,19 @@ function RegisterPage() {
                 <input 
                   type="text" 
                   placeholder="First"
-                  value={formData.name.first}
-                  onChange={(e) => dispatch({ type: 'UPDATE_NESTED_FIELD', field: 'name', subfield: 'first', value: e.target.value })}
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                   className="w-1/2 me-1" 
                 />
                 <input 
                   type="text" 
                   placeholder="Last" 
-                  value={formData.name.last}
-                  onChange={(e) => dispatch({ type: 'UPDATE_NESTED_FIELD', field: 'name', subfield: 'last', value: e.target.value })}
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                   className="w-1/2 me-1" 
                 />
               </div>
@@ -63,7 +77,9 @@ function RegisterPage() {
               <div>
                 <select
                   value={formData.gender}
-                  onChange={(e) => dispatch({ type: 'UPDATE_FIELD', field: 'gender', value: e.target.value })}
+                  name="gender"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                   className="my-2 py-2"
                 >
                   <option value="">Select an option</option>
@@ -119,8 +135,10 @@ function RegisterPage() {
               <input 
                 type="email"
                 placeholder="email@domain.com" 
+                name="email"
                 value={formData.email}
-                onChange={(e) => dispatch({ type: 'UPDATE_FIELD', field: 'email', value: e.target.value })}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </div>
 
@@ -128,9 +146,11 @@ function RegisterPage() {
               <h3 className="text-bold">Contact Number</h3>
               <input 
                 type="text" 
-                placeholder="(+63) 000 000 0000" 
+                placeholder="(+63) 000 000 0000"
+                name="contact"
                 value={formData.contact}
-                onChange={(e) => dispatch({ type: 'UPDATE_FIELD', field: 'contact', value: e.target.value })}
+                onChange={handleChange}
+                onBlur={handleBlur}
                 />
             </div>
           </div>
@@ -142,13 +162,19 @@ function RegisterPage() {
               <input 
                 type="password" 
                 placeholder="password" 
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
                 className="w-1/2 me-1"
-                value={formData.password.value}
-                onChange={(e) => dispatch({ type: 'UPDATE_NESTED_FIELD', field: 'password', subfield: 'value', value: e.target.value })}
               />
               <input
                 type="password" 
-                placeholder="confirm" 
+                placeholder="confirm"
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                onBlur={handleBlur}
                 className="w-1/2"
               />
             </div>
