@@ -1,5 +1,7 @@
 import { useEffect, useReducer, useState } from "react";
 import { Link } from "react-router-dom";
+// Package
+import axios from "axios";
 // Reducer
 import { userInitial, formReducer } from "../reducers/AccountReducer";
 // Data
@@ -25,17 +27,15 @@ function RegisterPage() {
     setDays(getDaysOfMonth(2023, '00'));
   }
 
-  const handleBlur = (e) => {
-    const { name, value } = e.target;
-    dispatch({ type: 'VALIDATE', field: name, value });
-  };
-
   const handleReset = () => {
     dispatch({ type: 'RESET'});
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    axios.get('/test');
+
     handleReset();
     console.log(formData);
   }
@@ -58,7 +58,6 @@ function RegisterPage() {
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleChange}
-                  onBlur={handleBlur}
                   className="w-1/2 me-1" 
                 />
                 <input 
@@ -67,7 +66,6 @@ function RegisterPage() {
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleChange}
-                  onBlur={handleBlur}
                   className="w-1/2 me-1" 
                 />
               </div>
@@ -79,7 +77,6 @@ function RegisterPage() {
                   value={formData.gender}
                   name="gender"
                   onChange={handleChange}
-                  onBlur={handleBlur}
                   className="my-2 py-2"
                 >
                   <option value="">Select an option</option>
@@ -138,7 +135,6 @@ function RegisterPage() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                onBlur={handleBlur}
               />
             </div>
 
@@ -150,7 +146,6 @@ function RegisterPage() {
                 name="contact"
                 value={formData.contact}
                 onChange={handleChange}
-                onBlur={handleBlur}
                 />
             </div>
           </div>
@@ -165,7 +160,6 @@ function RegisterPage() {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                onBlur={handleBlur}
                 className="w-1/2 me-1"
               />
               <input
@@ -174,7 +168,6 @@ function RegisterPage() {
                 name="confirmPassword"
                 value={formData.confirmPassword}
                 onChange={handleChange}
-                onBlur={handleBlur}
                 className="w-1/2"
               />
             </div>

@@ -11,16 +11,7 @@ export const userInitial = {
   email: '',
   password: '',
   confirmPassword: '',
-  
-  errors: {
-    firstName: '',
-    lastName: '',
-    gender: '',
-    birthdate: '',
-    contact: '',
-    email: '',
-    password: '',
-  },
+  loading: false,
 };
 
 export const formReducer = (state, action) => {
