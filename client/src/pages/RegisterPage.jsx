@@ -31,13 +31,33 @@ function RegisterPage() {
     dispatch({ type: 'RESET'});
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    axios.get('/test');
+    // Construct a date string in the format "YYYY-MM-DD"
+    const dateString = `${formData.birthdate.year}-${formData.birthdate.month}-${formData.birthdate.day}`;
+    const dateObject = new Date(dateString);
+    const epochTimestamp = dateObject.getTime();
+
+    try {
+      const response = await axios.post('/register', {
+        name: {
+          first: formData.firstName,
+          lastName: formData.lastName
+        },
+        birthday: epochTimestamp,
+        gender: formData.gender,
+        contact: formData.contact,
+        email: formData.email,
+        password: formData.password,
+      });
+      console.log(response);
+      alert('Register sucessful. Now you can login');
+    } catch (e) {
+      alert('Register failed. Please try again later.');
+    }
 
     handleReset();
-    console.log(formData);
   }
 
   return (

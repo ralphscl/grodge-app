@@ -3,9 +3,9 @@ export const userInitial = {
   lastName: '',
   gender: '',
   birthdate: {
-    day: '',
-    month: '',
-    year: '',
+    day: '01',
+    month: '01',
+    year: new Date().getFullYear(),
   },
   contact: '',
   email: '',
