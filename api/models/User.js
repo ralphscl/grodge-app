@@ -9,8 +9,10 @@ const UserSchema = new Schema({
             last: String,
         },
         gender: String,
-        birthdate: BigInt,
+        birthdate: String,
         contact: {type: String, unique: true},
+        dateCreated: String,
+        agreement: {type: mongoose.Schema.Types.Mixed, default: {}}
     },
     userAccount: {
         email: {type: String, unique: true},

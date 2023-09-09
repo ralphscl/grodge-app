@@ -21,15 +21,17 @@ app.use(cors({
 mongoose.connect(process.env.MONGODB_URL);
 
 app.post('/register', async (req, res) => {
-    const { name, gender, birthday, contact, email, password } = req.body;
+    const { name, gender, birthdate, contact, agreements, dateCreated, email, password } = req.body;
     
     try {
         const userDoc = await User.create({
             userDetails: {
                 name,
                 gender,
-                birthday,
-                contact
+                birthdate,
+                contact,
+                agreements,
+                dateCreated,
             },
             userAccount: {
                 email,
@@ -38,9 +40,10 @@ app.post('/register', async (req, res) => {
         });
 
         res.json(userDoc);
-    } catch (e) {
-        res.status(422).json(e);
-    }
+    } catch (error) {
+        // Handle the error and send an error response
+        res.status(422).json({ error: error.message });
+      }
 })
 
 app.get('/test', (req, res) => {

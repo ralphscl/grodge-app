@@ -8,11 +8,11 @@ const LoginPage = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    dispatch({ type: 'UPDATE_FIELD', field: name, value });
+    dispatch({ type: 'FIELD_UPDATE', field: name, value });
   }
 
   const handleReset = () => {
-    dispatch({ type: 'RESET'});
+    dispatch({ type: 'FIELD_RESET'});
   }
 
   const handleSubmit = (e) => {

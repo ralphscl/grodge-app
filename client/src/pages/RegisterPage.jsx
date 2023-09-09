@@ -1,16 +1,21 @@
 import { useEffect, useReducer, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // Package
 import axios from "axios";
 // Reducer
 import { userInitial, formReducer } from "../reducers/AccountReducer";
+// Validation
+import { validationRules } from "../validations/AccountValidation";
 // Data
 import { gender, month } from "../data/data";
 // Utils
 import { generateYearArray, getDaysOfMonth } from "../utils/DateUtils";
 
 function RegisterPage() {
+  const navigate = useNavigate();
+
   const [formData, dispatch] = useReducer(formReducer, userInitial);
+  const [errors, setErrors] = useState({});
   const [days, setDays] = useState(null);
 
   useEffect(() => {
@@ -19,11 +24,11 @@ function RegisterPage() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    dispatch({ type: 'UPDATE_FIELD', field: name, value });
+    dispatch({ type: 'FIELD_UPDATE', field: name, value });
   }
   
   const handleMonthChange = (field, subfield, value) => {
-    dispatch({ type: 'UPDATE_NESTED_FIELD', field, subfield, value });
+    dispatch({ type: 'FIELD_NESTED_UPDATE', field, subfield, value });
     setDays(getDaysOfMonth(2023, '00'));
   }
 
@@ -31,33 +36,65 @@ function RegisterPage() {
     dispatch({ type: 'RESET'});
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    validateFields();
+  }
+
+  const validateFields = () => {
+
+    const errors = {};
+    for (const field in formData) {
+      const rules = validationRules[field];
+      if (rules && Array.isArray(rules)) {
+        for (const rule of rules) {
+          if (rule.condition(formData[field], formData)) {
+            errors[field] = rule.message;
+            break; // Stop checking further rules for this field if one fails
+          }
+        }
+      }
+    }
+    setErrors(errors);
+    createUser();
+  }
+
+  const createUser = async () => {
+    dispatch({ type: 'REGISTER_LOADING' });
 
     // Construct a date string in the format "YYYY-MM-DD"
     const dateString = `${formData.birthdate.year}-${formData.birthdate.month}-${formData.birthdate.day}`;
     const dateObject = new Date(dateString);
     const epochTimestamp = dateObject.getTime();
-
+    
     try {
-      const response = await axios.post('/register', {
-        name: {
-          first: formData.firstName,
-          lastName: formData.lastName
-        },
-        birthday: epochTimestamp,
-        gender: formData.gender,
-        contact: formData.contact,
-        email: formData.email,
-        password: formData.password,
-      });
-      console.log(response);
-      alert('Register sucessful. Now you can login');
-    } catch (e) {
-      alert('Register failed. Please try again later.');
-    }
+      console.log(errors)
+      console.log(errors.length === 0)
+      if(errors.length === 0) {
+        await axios.post('/register', {
+          name: {
+            first: formData.firstName,
+            lastName: formData.lastName
+          },
+          birthdate: epochTimestamp.toString(),
+          gender: formData.gender,
+          contact: formData.contact,
+          email: formData.email,
+          password: formData.password,
+          agreement: {},
+          dateCreated: new Date().getTime().toString(),
+        });
+        dispatch({ type: 'REGISTER_SUCCESS' });
+        alert('Register sucessful. Now you can login');
 
-    handleReset();
+        handleReset();
+        navigate("/login");
+      } else {
+        dispatch({ type: 'REGISTER_FAILURE' });
+      }
+    } catch (e) {
+      dispatch({ type: 'REGISTER_FAILURE' });
+    }
   }
 
   return (
@@ -78,7 +115,7 @@ function RegisterPage() {
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleChange}
-                  className="w-1/2 me-1" 
+                  className={`w-1/2 me-1 rounded focus:outline-none focus:bg-white ${errors.firstName ? 'border border-red-500' : 'border border-gray-200'}` }
                 />
                 <input 
                   type="text" 
@@ -86,7 +123,7 @@ function RegisterPage() {
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleChange}
-                  className="w-1/2 me-1" 
+                  className={`w-1/2 me-1 rounded focus:outline-none focus:bg-white ${errors.lastName ? 'border border-red-500' : 'border border-gray-200'}` }
                 />
               </div>
             </div>
@@ -97,7 +134,7 @@ function RegisterPage() {
                   value={formData.gender}
                   name="gender"
                   onChange={handleChange}
-                  className="my-2 py-2"
+                  className={`my-2 py-2" rounded focus:outline-none focus:bg-white ${errors.gender ? 'border border-red-500' : 'border border-gray-200'}` }
                 >
                   <option value="">Select an option</option>
                   {gender.map(item => {
@@ -116,7 +153,7 @@ function RegisterPage() {
               <select
                 value={formData.birthdate.year}
                 onChange={(e) => handleMonthChange('birthdate', 'year', e.target.value)}
-                className="my-2 me-1 py-2"
+                className={`w-1/2 me-1 rounded focus:outline-none focus:bg-white ${errors.birthdate ? 'border border-red-500' : 'border border-gray-200'}` }
               >
                 {generateYearArray().map((item) => {
                   return <option key={item} value={item}>{item}</option>
@@ -126,7 +163,7 @@ function RegisterPage() {
               <select
                 value={formData.birthdate.month}
                 onChange={(e) => handleMonthChange('birthdate', 'month', e.target.value)}
-                className="my-2 me-1 py-2"
+                className={`w-1/2 me-1 rounded focus:outline-none focus:bg-white ${errors.birthdate ? 'border border-red-500' : 'border border-gray-200'}` }
               >
                 {month.map(item => {
                   return <option key={item.value} value={item.value}>{item.text}</option>
@@ -136,7 +173,7 @@ function RegisterPage() {
               <select
                 value={formData.birthdate.day}
                 onChange={(e) => handleMonthChange('birthdate', 'day', e.target.value)}
-                className="my-2 me-1 py-2"
+                className={`w-1/2 me-1 rounded focus:outline-none focus:bg-white ${errors.birthdate ? 'border border-red-500' : 'border border-gray-200'}` }
               >
                 {days?.map(item => {
                   return <option key={item} value={item}>{item}</option>
@@ -155,6 +192,7 @@ function RegisterPage() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                className={`w-1/2 me-1 rounded focus:outline-none focus:bg-white ${errors.email ? 'border border-red-500' : 'border border-gray-200'}` }
               />
             </div>
 
@@ -166,6 +204,7 @@ function RegisterPage() {
                 name="contact"
                 value={formData.contact}
                 onChange={handleChange}
+                className={`w-1/2 me-1 rounded focus:outline-none focus:bg-white ${errors.contact ? 'border border-red-500' : 'border border-gray-200'}` }
                 />
             </div>
           </div>
@@ -180,7 +219,7 @@ function RegisterPage() {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-1/2 me-1"
+                className={`w-1/2 me-1 rounded focus:outline-none focus:bg-white ${errors.password ? 'border border-red-500' : 'border border-gray-200'}` }
               />
               <input
                 type="password" 
@@ -188,12 +227,17 @@ function RegisterPage() {
                 name="confirmPassword"
                 value={formData.confirmPassword}
                 onChange={handleChange}
-                className="w-1/2"
+                className={`w-1/2 me-1 rounded focus:outline-none focus:bg-white ${errors.password ? 'border border-red-500' : 'border border-gray-200'}` }
               />
             </div>
           </div>
 
-          <button className="py-2 primary">Register</button>
+          <button 
+            className="py-2 primary"
+            disabled={formData.loading ? true : false}
+          >
+            {formData.loading ? 'Loading' : 'Register'}
+          </button>
           <p className="py-2 text-center text-gray-500">
             {"Already have an account? "} 
             <Link 
