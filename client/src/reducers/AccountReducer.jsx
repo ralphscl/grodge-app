@@ -4,7 +4,7 @@ export const userInitial = {
   gender: '',
   birthdate: {
     day: '01',
-    month: '01',
+    month: '00',
     year: new Date().getFullYear(),
   },
   contact: '',

@@ -7,7 +7,7 @@ import { userInitial, formReducer } from "../reducers/AccountReducer";
 // Validation
 import { validationRules } from "../validations/AccountValidation";
 // Data
-import { gender, month } from "../data/data";
+import { gender, month } from "../data/optionData.js";
 // Utils
 import { generateYearArray, getDaysOfMonth } from "../utils/DateUtils";
 
@@ -68,9 +68,7 @@ function RegisterPage() {
     const epochTimestamp = dateObject.getTime();
     
     try {
-      console.log(errors)
-      console.log(errors.length === 0)
-      if(errors.length === 0) {
+      if(Object.keys(errors).length === 0) {
         await axios.post('/register', {
           name: {
             first: formData.firstName,

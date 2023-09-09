@@ -17,21 +17,6 @@ export const validationRules = {
         message: 'Gender is required',
       }
     ],
-    birthdate: [
-      {
-        condition: (field, state) => {
-          const { day, month, year } = state.birthdate;
-    
-          const birthdate = new Date(year, month, day);
-
-          const ageInMilliseconds = new Date() - birthdate;
-          const ageInYears = ageInMilliseconds / (365 * 24 * 60 * 60 * 1000);
-          
-          return ageInYears >= 18;
-        },
-        message: 'Must be 18 years old',
-      },
-    ],
     email: [
       {
         condition: (field) => !field,

@@ -1,7 +1,7 @@
 // Components
 import NavRouter from '../NavRouter';
 // Data
-import { navLinks, userMenu } from '../../data/data.jsx';
+import { navLinks, userMenu } from '../../data/navigationData.jsx';
 // Asset
 import grodgeLogoBlack from '../../assets/png/grodge-text-black-transparent.png';
 
