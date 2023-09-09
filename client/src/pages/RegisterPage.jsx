@@ -32,10 +32,6 @@ function RegisterPage() {
     setDays(getDaysOfMonth(2023, '00'));
   }
 
-  const handleReset = () => {
-    dispatch({ type: 'RESET'});
-  }
-
   const handleSubmit = (e) => {
     e.preventDefault();
     validateFields();
@@ -56,11 +52,11 @@ function RegisterPage() {
       }
     }
     setErrors(errors);
-    createUser();
+    createUser(errors);
   }
 
-  const createUser = async () => {
-    dispatch({ type: 'REGISTER_LOADING' });
+  const createUser = async (errorFields) => {
+    dispatch({ type: 'FORM_LOADING' });
 
     // Construct a date string in the format "YYYY-MM-DD"
     const dateString = `${formData.birthdate.year}-${formData.birthdate.month}-${formData.birthdate.day}`;
@@ -68,7 +64,8 @@ function RegisterPage() {
     const epochTimestamp = dateObject.getTime();
     
     try {
-      if(Object.keys(errors).length === 0) {
+
+      if(Object.keys(errorFields).length === 0) {
         await axios.post('/register', {
           name: {
             first: formData.firstName,
@@ -82,16 +79,16 @@ function RegisterPage() {
           agreement: {},
           dateCreated: new Date().getTime().toString(),
         });
-        dispatch({ type: 'REGISTER_SUCCESS' });
+        dispatch({ type: 'FORM_SUCCESS' });
         alert('Register sucessful. Now you can login');
 
-        handleReset();
         navigate("/login");
       } else {
-        dispatch({ type: 'REGISTER_FAILURE' });
+        dispatch({ type: 'FORM_FAILURE' });
       }
     } catch (e) {
-      dispatch({ type: 'REGISTER_FAILURE' });
+      dispatch({ type: 'FORM_FAILURE' });
+      alert('Registration failed. Please try again later.');
     }
   }
 

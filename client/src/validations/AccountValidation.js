@@ -37,10 +37,6 @@ export const validationRules = {
       {
         condition: (field) => field.length > 10,
         message: 'Password must be greater atleast 10 characters',
-      },
-      {
-        condition: (field, state) => state.password !== state.confirmPassword,
-        message: 'Passwords do not match',
       }
     ]
   };

@@ -1,24 +1,67 @@
-import { useReducer } from "react";
-import { Link } from "react-router-dom";
+import { useState, useReducer } from "react";
+import { Link, useNavigate } from "react-router-dom";
+// Package
+import axios from "axios";
 // Reducer
 import { userInitial, formReducer } from "../reducers/AccountReducer";
+// Validation
+import { validationRules } from "../validations/AccountValidation";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+  
   const [formData, dispatch] = useReducer(formReducer, userInitial);
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     dispatch({ type: 'FIELD_UPDATE', field: name, value });
   }
 
-  const handleReset = () => {
-    dispatch({ type: 'FIELD_RESET'});
-  }
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleReset();
-    console.log(formData)
+    validateFields();
+  }
+
+  const validateFields = () => {
+
+    const errors = {};
+    for (const field in formData) {
+      const rules = validationRules[field];
+      if ((field === 'email' || field === 'password') && rules && Array.isArray(rules)) {
+        for (const rule of rules) {
+          if (rule.condition(formData[field], formData)) {
+            errors[field] = rule.message;
+            break; // Stop checking further rules for this field if one fails
+          }
+        }
+      }
+    }
+    setErrors(errors);
+    authenticateUser(errors);
+  }
+
+  const authenticateUser = async (errorFields) => {
+    dispatch({ type: 'FORM_LOADING' });
+    try {
+      
+      if(Object.keys(errorFields).length === 0) {
+
+        await axios.post('/login', {
+          email: formData.email,
+          password: formData.password
+        })
+        
+        dispatch({ type: 'FORM_SUCCESS' });
+        alert('Login success! Welcome!');
+
+        navigate("/");
+      } else {
+        dispatch({ type: 'FORM_FAILURE' });
+      }
+    } catch (e) {
+      dispatch({ type: 'FORM_FAILURE' });
+    }
   }
 
   return (
@@ -33,6 +76,7 @@ const LoginPage = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
+            className={`w-1/2 me-1 rounded focus:outline-none focus:bg-white ${errors.email ? 'border border-red-500' : 'border border-gray-200'}` }
           />
           <input 
             type="password" 
@@ -40,9 +84,15 @@ const LoginPage = () => {
             name="password"
             value={formData.password}
             onChange={handleChange}
+            className={`w-1/2 me-1 rounded focus:outline-none focus:bg-white ${errors.password ? 'border border-red-500' : 'border border-gray-200'}` }
           />
 
-          <button className="primary">Login</button>
+          <button 
+            className="primary"
+            disabled={formData.loading ? true : false}
+          >
+            {formData.loading ? 'Loading' : 'Login'}
+          </button>
           <p className="py-2 text-center text-gray-500">
             {"Don't an account yet? "}
             <Link 
