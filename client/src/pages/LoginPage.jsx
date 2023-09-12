@@ -76,15 +76,26 @@ const LoginPage = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className={`w-1/2 me-1 rounded focus:outline-none focus:bg-white ${errors.email ? 'border border-red-500' : 'border border-gray-200'}` }
+            className={`
+              w-1/2 me-1 rounded 
+              focus:outline-none 
+              focus:bg-white 
+              ${errors.email ? 'border border-red-500' : 'border border-gray-200'}
+            `}
           />
+          
           <input 
             type="password" 
             placeholder="password" 
             name="password"
             value={formData.password}
             onChange={handleChange}
-            className={`w-1/2 me-1 rounded focus:outline-none focus:bg-white ${errors.password ? 'border border-red-500' : 'border border-gray-200'}` }
+            className={`
+              w-1/2 me-1 rounded 
+              focus:outline-none 
+              focus:bg-white 
+              ${errors.password ? 'border border-red-500' : 'border border-gray-200'}
+            `}
           />
 
           <button 
