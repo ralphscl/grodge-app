@@ -69,7 +69,7 @@ function RegisterPage() {
         await axios.post('/register', {
           name: {
             first: formData.firstName,
-            lastName: formData.lastName
+            last: formData.lastName
           },
           birthdate: epochTimestamp.toString(),
           gender: formData.gender,

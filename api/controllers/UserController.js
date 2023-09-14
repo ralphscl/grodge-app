@@ -6,7 +6,6 @@ const jwt = require('jsonwebtoken');
 // Models
 const User = require('../models/User.js');
 
-
 const router = express.Router();
 const bcryptjsSalt = bcryptjs.genSaltSync(10);
 const jwtSecret = '87784y3ueri3j2ou83hbegqwy78ud';
@@ -45,15 +44,35 @@ router.post('/login', async (req, res) => {
   if(userDoc) {
     const passwordAuth = bcryptjs.compareSync(password, userDoc.userAccount.password);
     if(passwordAuth){
-      jwt.sign({id: userDoc._id, email: userDoc.userDetails.email}, jwtSecret, {}, (err, token) => {
+      jwt.sign({ id: userDoc._id }, jwtSecret, {}, (err, token) => {
         if(err) throw err;
-        res.cookie('token', token).json('pass ok');
+
+        res.cookie('token', token).json(userDoc);
       });
     } else {
-      res.status(401).json('wrong password')
+      res.status(401).json('Wrong Password')
     }
   } else {
-    res.status(404).json('email not found')
+    res.status(404).json('Email Not Found')
+  }
+})
+
+router.get('/profile', async (req, res) => {
+  const { token } = req.cookies;
+  
+  if(token) {
+    jwt.verify(token, jwtSecret, {}, async (err, payload) => {
+      if(err) throw err;
+      
+      const {userDetails, userAccount, _id} = await User.findById(payload.id);
+      res.json({
+        _id, 
+        email: userAccount.email,
+        ...userDetails,
+      });
+    })
+  } else {
+    res.json(null);
   }
 })
 

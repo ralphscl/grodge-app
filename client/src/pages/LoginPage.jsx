@@ -1,7 +1,9 @@
-import { useState, useReducer } from "react";
+import { useState, useReducer, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // Package
 import axios from "axios";
+// Contexts
+import { UserContext } from "../context/UserContext";
 // Reducer
 import { userInitial, formReducer } from "../reducers/AccountReducer";
 // Validation
@@ -9,9 +11,11 @@ import { validationRules } from "../validations/AccountValidation";
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
   
   const [formData, dispatch] = useReducer(formReducer, userInitial);
   const [errors, setErrors] = useState({});
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -47,10 +51,16 @@ const LoginPage = () => {
       
       if(Object.keys(errorFields).length === 0) {
 
-        await axios.post('/login', {
+        const { data } = await axios.post('/login', {
           email: formData.email,
           password: formData.password
         })
+        
+        setUser({
+          id: data._id,
+          name: data.userDetails.name,
+          email: data.userAccount.email,
+        });
         
         dispatch({ type: 'FORM_SUCCESS' });
         alert('Login success! Welcome!');
