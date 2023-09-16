@@ -7,7 +7,7 @@ import { userInitial, formReducer } from "../reducers/AccountReducer";
 // Validation
 import { validationRules } from "../validations/AccountValidation";
 // Data
-import { gender, month } from "../data/optionData.js";
+import { gender, month } from "../data/optionData.jsx";
 // Utils
 import { generateYearArray, getDaysOfMonth } from "../utils/DateUtils";
 

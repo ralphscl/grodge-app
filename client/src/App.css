@@ -21,7 +21,6 @@ button.primary {
     rounded-2xl
 
     hover:bg-accent-secondary
-    hover:text-black
 }
 
 h1 {
@@ -37,8 +36,7 @@ h1 {
     rounded-lg 
     cursor-pointer 
 
-    hover:bg-accent-primary
-    hover:text-white-custom;
+    hover:text-accent-primary;
 }
 
 .navbar-icons svg {

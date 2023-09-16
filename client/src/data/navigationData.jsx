@@ -1,8 +1,7 @@
 // User Menu Icons
+import { ReactComponent as Profile } from '..//assets/svg/user.svg';
 import { ReactComponent as ShoppingBag } from '../assets/svg/bag.svg';
 import { ReactComponent as WishList } from '../assets/svg/heart.svg';
-import { ReactComponent as Search } from '../assets/svg/magnifying.svg';
-import { ReactComponent as User } from '../assets/svg/user.svg';
 
 /**
  * Navigation Link
@@ -31,18 +30,18 @@ export const navLinks = [
  */
 export const userMenu = [
   {
-    icon: <Search />
+    label: 'Profile',
+    icon: <Profile className='inline group-hover:stroke-white' />,
+    target: '/profile'
   },
   {
-    icon: <ShoppingBag />,
+    label: 'Cart',
+    icon: <ShoppingBag className='inline group-hover:stroke-white' />,
     target: '/cart'
   },
   {
-    icon: <WishList />,
-    target: 'wishlist'
-  },
-  {
-    icon: <User />,
-    target: 'login'
+    label: 'Wishlist',
+    icon: <WishList className='inline group-hover:stroke-white' />,
+    target: '/wishlist'
   }
 ];
