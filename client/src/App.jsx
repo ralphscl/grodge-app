@@ -8,6 +8,7 @@ import Layout from './Layout';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/HomePage';
+import AccountPage from './pages/AccountPage';
 // CSS
 import './App.css'
 
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
+          <Route path='/account/:subpage?' element={<AccountPage />} />
         </Route>
         
         <Route path='/login' element={<LoginPage />} />

@@ -57,6 +57,10 @@ router.post('/login', async (req, res) => {
   }
 })
 
+router.post('/logout', (req, res) => {
+  res.cookie('token', '').json(true);
+})
+
 router.get('/profile', async (req, res) => {
   const { token } = req.cookies;
   
