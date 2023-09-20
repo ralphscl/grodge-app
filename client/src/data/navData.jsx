@@ -35,13 +35,18 @@ export const userMenu = [
     target: '/account'
   },
   {
-    label: 'Cart',
+    label: 'Basket',
     component: <ShoppingBag className='inline group-hover:stroke-white' />,
-    target: '/account/cart'
+    target: '/account/basket'
   },
   {
     label: 'Wishlist',
     component: <WishList className='inline group-hover:stroke-white' />,
     target: '/account/wishlist'
+  },
+  {
+    label: 'History',
+    component: '',
+    target: '/account/history'
   }
 ];

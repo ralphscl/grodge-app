@@ -25,7 +25,7 @@ const Header = () => {
   }
 
   return (
-    <nav className='px-24 py-4 w-full flex gap-2 shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]'>
+    <nav className='bg-white px-24 py-4 w-full sticky top-0 flex gap-2 shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]'>
       <div className="w-4/12 text-start">
         <NavRouter key={'logo'} target='/' component={<img src={grodgeLogoBlack} alt="grodge-sale-logo" width={150} />} />
       </div>

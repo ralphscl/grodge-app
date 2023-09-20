@@ -30,7 +30,7 @@ const NavMenu = ({ trigger, user, onLogout }) => {
           <h1 className='mb-1'>Hi {`${user.name.first} ${user.name.last}`}!</h1>
           <hr className='mb-2' />
 
-          {userMenu.map(({label, component, target}, index) => {
+          {userMenu.slice(0, 3).map(({label, component, target}, index) => {
             return <Link onClick={() => setIsOpen(false)} key={index} className='p-1 w-full block rounded cursor-pointer hover:bg-accent-secondary hover:text-white-custom group' to={target}>{component} {label}</Link>;
           })}
 

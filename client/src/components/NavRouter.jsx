@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const NavRouter = ({component, target="/", className=''}) => {
+const NavRouter = ({component, target="/"}) => {
     return (
-        <Link to={target} className={className}>
+        <Link to={target}>
             {component}
         </Link>
     );
@@ -11,8 +11,7 @@ const NavRouter = ({component, target="/", className=''}) => {
 
 NavRouter.propTypes = {
     component: PropTypes.element.isRequired,
-    target: PropTypes.string.isRequired,
-    className: PropTypes.string
+    target: PropTypes.string.isRequired
 };
   
 export default NavRouter;
