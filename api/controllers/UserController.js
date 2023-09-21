@@ -61,7 +61,7 @@ router.post('/logout', (req, res) => {
   res.cookie('token', '').json(true);
 })
 
-router.get('/profile', async (req, res) => {
+router.get('/authenticate', async (req, res) => {
   const { token } = req.cookies;
   
   if(token) {
@@ -75,6 +75,23 @@ router.get('/profile', async (req, res) => {
         ...userDetails,
       });
     })
+  } else {
+    res.json(null);
+  }
+})
+
+router.get('/profile', async (req, res) => {
+  const { userId } = req.query;
+
+  if(userId) {
+    const {userDetails, userAccount, _id} = await User.findById(userId);
+    res.json({
+      _id, 
+      userDetails,
+      userAccount: {
+        email: userAccount.email,
+      }
+    });
   } else {
     res.json(null);
   }

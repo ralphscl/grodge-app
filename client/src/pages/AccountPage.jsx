@@ -5,6 +5,8 @@ import { UserContext } from "../context/UserContext";
 // Data
 import { userMenu } from "../data/navData";
 import NavRouter from "../components/NavRouter";
+// Component
+import AccountData from "./account/AccountData";
 
 const AccountPage = () => {
   const { user, ready } = useContext(UserContext)
@@ -25,22 +27,19 @@ const AccountPage = () => {
       classes += ' bg-accent-primary text-white-custom rounded';
     }
 
-    console.log(classes)
     return classes;
   }
-
+  
   return (
     <div className='flex gap-1'>
       <nav className='w-2/12 h-96 p-4 m-8 rounded shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]'>
-        <h1 className='text-lg text-center'>My Profile</h1>
-        <hr className="mb-8"/>
         {userMenu.map(({label, target}) => {
           return <NavRouter key={label} component={<p className={setNavClass(label.toLowerCase())}>{label}</p>} target={target}/>;
         })}
       </nav>
 
-      <section className='w-10/12 h-auto p-4 my-8'>
-        content
+      <section className='w-10/12 h-auto my-8'>
+        {subpage == undefined ? <AccountData userId={user._id} /> : 'content'}
       </section>
     </div>
   )
