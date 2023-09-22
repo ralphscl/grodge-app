@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react";
+import { useReducer, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // Package
 import axios from "axios";
@@ -7,29 +7,18 @@ import { userInitial, formReducer } from "../reducers/AccountReducer";
 // Validation
 import { validationRules } from "../validations/AccountValidation";
 // Data
-import { gender, month } from "../data/optionData.jsx";
-// Utils
-import { generateYearArray, getDaysOfMonth } from "../utils/DateUtils";
+import { gender } from "../data/optionData.jsx";
 
 function RegisterPage() {
   const navigate = useNavigate();
 
   const [formData, dispatch] = useReducer(formReducer, userInitial);
   const [errors, setErrors] = useState({});
-  const [days, setDays] = useState(null);
 
-  useEffect(() => {
-    setDays(getDaysOfMonth(2023, '00'));
-  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     dispatch({ type: 'FIELD_UPDATE', field: name, value });
-  }
-  
-  const handleMonthChange = (field, subfield, value) => {
-    dispatch({ type: 'FIELD_NESTED_UPDATE', field, subfield, value });
-    setDays(getDaysOfMonth(2023, '00'));
   }
 
   const handleSubmit = (e) => {
@@ -59,8 +48,7 @@ function RegisterPage() {
     dispatch({ type: 'FORM_LOADING' });
 
     // Construct a date string in the format "YYYY-MM-DD"
-    const dateString = `${formData.birthdate.year}-${formData.birthdate.month}-${formData.birthdate.day}`;
-    const dateObject = new Date(dateString);
+    const dateObject = new Date(formData.birthdate);
     const epochTimestamp = dateObject.getTime();
     
     try {
@@ -99,9 +87,9 @@ function RegisterPage() {
         <form className="p-8 max-w-2xl mx-auto border rounded-xl shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]" onSubmit={handleSubmit}>
         <h1 className="mb-8 text-4xl text-center">Registration</h1>
 
-          {/* Name and Gender */}
+          {/* Name */}
           <div className="py-1 flex">
-            <div className="w-2/3">
+            <div>
               <h3 className="text-bold">Full Name</h3>
               <div className="flex">
                 <input 
@@ -122,14 +110,30 @@ function RegisterPage() {
                 />
               </div>
             </div>
-            <div className="w-1/3">
-              <h3 className="text-bold">Gender</h3>
-              <div>
+          </div>
+
+          {/* Birthdate and Gender */}
+          <div className="py-1">
+            <div className="flex">
+
+              <div className="w-1/2 me-1">
+                <h3 className="text-bold">Birthdate</h3>
+                <input 
+                  type="date" 
+                  name="birthdate"
+                  value={formData.birthdate}
+                  onChange={handleChange}
+                  className={`rounded focus:outline-none focus:bg-white ${errors.firstName ? 'border border-red-500' : 'border border-gray-200'}` }
+                />
+              </div>
+              
+              <div className="w-1/2 me-1">
+                <h3 className="text-bold">Gender</h3>
                 <select
                   value={formData.gender}
                   name="gender"
                   onChange={handleChange}
-                  className={`my-2 py-2" rounded focus:outline-none focus:bg-white ${errors.gender ? 'border border-red-500' : 'border border-gray-200'}` }
+                  className={`mt-2 rounded focus:outline-none focus:bg-white ${errors.gender ? 'border border-red-500' : 'border border-gray-200'}` }
                 >
                   <option value="">Select an option</option>
                   {gender.map(item => {
@@ -137,43 +141,7 @@ function RegisterPage() {
                   })}
                 </select>
               </div>
-            </div>
-          </div>
-
-          {/* Birthdate */}
-          <div className="py-1">
-            <h3 className="text-bold">Birthday</h3>
-            <div className="flex">
-
-              <select
-                value={formData.birthdate.year}
-                onChange={(e) => handleMonthChange('birthdate', 'year', e.target.value)}
-                className={`w-1/2 me-1 rounded focus:outline-none focus:bg-white ${errors.birthdate ? 'border border-red-500' : 'border border-gray-200'}` }
-              >
-                {generateYearArray().map((item) => {
-                  return <option key={item} value={item}>{item}</option>
-                })}
-              </select>
-              
-              <select
-                value={formData.birthdate.month}
-                onChange={(e) => handleMonthChange('birthdate', 'month', e.target.value)}
-                className={`w-1/2 me-1 rounded focus:outline-none focus:bg-white ${errors.birthdate ? 'border border-red-500' : 'border border-gray-200'}` }
-              >
-                {month.map(item => {
-                  return <option key={item.value} value={item.value}>{item.text}</option>
-                })}
-              </select>
-
-              <select
-                value={formData.birthdate.day}
-                onChange={(e) => handleMonthChange('birthdate', 'day', e.target.value)}
-                className={`w-1/2 me-1 rounded focus:outline-none focus:bg-white ${errors.birthdate ? 'border border-red-500' : 'border border-gray-200'}` }
-              >
-                {days?.map(item => {
-                  return <option key={item} value={item}>{item}</option>
-                })}
-              </select>
+                
             </div>
           </div>
 

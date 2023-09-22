@@ -6,7 +6,7 @@ import { UserContext } from "../context/UserContext";
 import { userMenu } from "../data/navData";
 import NavRouter from "../components/NavRouter";
 // Component
-import AccountData from "./account/AccountData";
+import AccountDashboard from "./account/AccountDashboard";
 
 const AccountPage = () => {
   const { user, ready } = useContext(UserContext)
@@ -22,7 +22,7 @@ const AccountPage = () => {
 
 
   const setNavClass = (type) => {
-    let classes = 'mt-2 py-1 px-2 rounded hover:bg-accent-secondary hover:text-white-custom';
+    let classes = 'sidenav-links';
     if(type === subpage || (subpage === undefined && type === 'account')) {
       classes += ' bg-accent-primary text-white-custom rounded';
     }
@@ -31,15 +31,16 @@ const AccountPage = () => {
   }
   
   return (
-    <div className='flex gap-1'>
-      <nav className='w-2/12 h-96 p-4 m-8 rounded shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]'>
-        {userMenu.map(({label, target}) => {
-          return <NavRouter key={label} component={<p className={setNavClass(label.toLowerCase())}>{label}</p>} target={target}/>;
+    <div className='flex gap-4'>
+      <nav className='w-3/12 h-96 p-4 mx-8'>
+        <h1 className='mx-2 mt-4 mb-8 text-2xl font-bold'>My Account</h1>
+        {userMenu.map(({label, value, target}) => {
+          return <NavRouter key={label} component={<p className={setNavClass(value.toLowerCase())}> {label}</p>} target={target}/>;
         })}
       </nav>
 
-      <section className='w-10/12 h-auto my-8'>
-        {subpage == undefined ? <AccountData userId={user._id} /> : 'content'}
+      <section className='w-9/12 h-auto my-8'>
+        {subpage == undefined ? <AccountDashboard userId={user._id} /> : 'content'}
       </section>
     </div>
   )

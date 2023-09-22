@@ -1,6 +1,17 @@
+svg {
+    @apply
+    w-6 h-6
+    inline
+    text-black-custom
+    cursor-pointer
+
+    hover:text-accent-primary
+}
+
 input[type="text"],
 input[type="password"],
 input[type="email"],
+input[type="date"],
 select {
     @apply
     w-full h-10
@@ -43,11 +54,11 @@ h1 {
     hover:text-accent-primary;
 }
 
-.navbar-icons svg {
+.sidenav-links {
     @apply
-    w-6 h-6
-    text-black-custom
-    cursor-pointer
-
-    hover:text-accent-primary
+    mt-2 py-3 px-2 
+    border-b-2 
+    border-b-gray-200 
+    hover:bg-accent-secondary 
+    hover:text-white-custom hover:rounded
 }

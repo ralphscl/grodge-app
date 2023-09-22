@@ -2,11 +2,7 @@ export const userInitial = {
   firstName: '',
   lastName: '',
   gender: '',
-  birthdate: {
-    day: '01',
-    month: '00',
-    year: new Date().getFullYear(),
-  },
+  birthdate: new Date(),
   contact: '',
   email: '',
   password: '',

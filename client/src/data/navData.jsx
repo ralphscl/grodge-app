@@ -3,6 +3,7 @@ import { ReactComponent as Account } from '..//assets/svg/user.svg';
 import { ReactComponent as ShoppingBag } from '../assets/svg/bag.svg';
 import { ReactComponent as WishList } from '../assets/svg/heart.svg';
 
+
 /**
  * Navigation Link
  */
@@ -30,23 +31,33 @@ export const navLinks = [
  */
 export const userMenu = [
   {
-    label: 'Account',
-    component: <Account className='inline group-hover:stroke-white' />,
+    label: 'Account Dashboard',
+    value: 'account',
+    component: <Account />,
     target: '/account'
   },
   {
-    label: 'Basket',
-    component: <ShoppingBag className='inline group-hover:stroke-white' />,
+    label: 'Account Information',
+    value: 'information',
+    component: <Account />,
+    target: '/account/information'
+  },
+  {
+    label: 'My Basket',
+    value: 'basket',
+    component: <ShoppingBag />,
     target: '/account/basket'
   },
   {
-    label: 'Wishlist',
-    component: <WishList className='inline group-hover:stroke-white' />,
+    label: 'My Wishlist',
+    value: 'wishlist',
+    component: <WishList />,
     target: '/account/wishlist'
   },
   {
-    label: 'History',
+    label: 'Newsletter Subscription',
+    value: 'newsletter',
     component: '',
-    target: '/account/history'
+    target: '/account/newsletter'
   }
 ];
