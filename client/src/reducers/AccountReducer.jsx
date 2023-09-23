@@ -1,5 +1,6 @@
 export const userInitial = {
   firstName: '',
+  middleName: '',
   lastName: '',
   gender: '',
   birthdate: new Date(),

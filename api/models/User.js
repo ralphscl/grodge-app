@@ -6,6 +6,7 @@ const UserSchema = new Schema({
     userDetails: {
         name: {
             first: String,
+            middle: String,
             last: String,
         },
         gender: String,

@@ -7,6 +7,7 @@ import { userMenu } from "../data/navData";
 import NavRouter from "../components/NavRouter";
 // Component
 import AccountDashboard from "./account/AccountDashboard";
+import AccountInformation from "./account/AccountInformation";
 
 const AccountPage = () => {
   const { user, ready } = useContext(UserContext)
@@ -41,7 +42,11 @@ const AccountPage = () => {
       </nav>
 
       <section className='w-9/12 h-auto6 px-4 my-8 me-20'>
-        {subpage == undefined ? <AccountDashboard userId={user._id} email={user.email} /> : 'content'}
+        {subpage == undefined ? 
+          <AccountDashboard userId={user._id} email={user.email} /> 
+        : subpage == 'information' ?
+          <AccountInformation userId={user._id} />
+        : 'content'}
       </section>
     </div>
   )

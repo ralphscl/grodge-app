@@ -41,7 +41,7 @@ const AccountDashboard = ({userId, email}) => {
       setLoading(false);
     }
     
-  }, []);
+  }, [userId, email]);
 
   if(loading) {
     return <p className='text-center'>Loading...</p>
@@ -60,8 +60,9 @@ const AccountDashboard = ({userId, email}) => {
       <hr className='mt-4 mb-8' />
 
       <div className='flex h-3/6 mb-2'>
+        {/* Account Information */}
         <div className='w-1/2'>
-          <h1 className='my-4 text-md font-bold font-sans'>CONTACT INFORMATION</h1>
+          <h2 className='my-4 text-md font-bold font-sans'>CONTACT INFORMATION</h2>
           <p>{`${formData.userDetails.name.first} ${formData.userDetails.name.last}`}</p>
           <p>{formData.userAccount.email}</p>
 
@@ -73,6 +74,7 @@ const AccountDashboard = ({userId, email}) => {
             Edit
           </button>
         </div>
+        {/* Newsletter Subscription */}
         <div className='w-1/2'>
           <h1 className='my-4 text-md font-bold font-sans'>NEWSLETTER SUBSCRIPTION</h1>
           <p>You are currently {formData.newsletterSubscription ? 'subcribed' : 'not subscribe'} to <br/>Grodge Newsletter.</p>
@@ -83,15 +85,29 @@ const AccountDashboard = ({userId, email}) => {
         </div>
       </div>
 
-      <h1 className='my-1 text-lg font-bold font-sans'>ADDRESS BOOK</h1>
+      <h2 className='my-1 text-lg font-bold font-sans'>ADDRESS BOOK</h2>
       <div className='flex h-3/6 mb-2'>
+        {/* Biling Address */}
         <div className='w-1/2'>
-          <h1 className='my-4 text-md font-bold font-sans'>DEFAULT BILLING ADDRESSS</h1>
-          a
+          <h2 className='my-4 text-md font-bold font-sans'>DEFAULT BILLING ADDRESSS</h2>
+          <p>You have not set a default billing address.</p>
+
+          <button className='my-2 me-2 py-1 px-4 border rounded-full inline border-black-custom hover:bg-accent-secondary hover:border-accent-secondary hover:text-white-custom'>
+            Manage Addresses
+          </button>
+
+          <button className='my-2 ms-2 py-1 px-4 border rounded-full inline bg-accent-primary border-accent-primary text-white-custom hover:bg-accent-secondary  hover:border-accent-secondary'>
+            Edit
+          </button>
         </div>
+        {/* Shipping Address */}
         <div className='w-1/2'>
-          <h1 className='my-4 text-md font-bold font-sans'>DEFAULT SHIPPING ADDRESSS</h1>
-          a
+          <h2 className='my-4 text-md font-bold font-sans'>DEFAULT SHIPPING ADDRESSS</h2>
+          <p>You have not set a default billing address.</p>
+
+          <button className='my-2 py-1 px-4 border rounded-full inline bg-accent-primary border-accent-primary text-white-custom hover:bg-accent-secondary  hover:border-accent-secondary'>
+            Edit
+          </button>
         </div>
       </div>
     </>

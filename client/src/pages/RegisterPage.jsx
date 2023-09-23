@@ -69,6 +69,7 @@ function RegisterPage() {
         await axios.post('/register', {
           name: {
             first: formData.firstName,
+            middle: formData.middleName,
             last: formData.lastName
           },
           birthdate: epochTimestamp.toString(),
@@ -77,7 +78,7 @@ function RegisterPage() {
           email: formData.email,
           password: formData.password,
           agreement: {},
-          dateCreated: new Date().getTime().toString(),
+          dateCreated: new Date().getTime().toString()
         });
 
         dispatch({ type: 'FORM_SUCCESS' });
@@ -111,7 +112,15 @@ function RegisterPage() {
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleChange}
-                  className={`w-1/2 me-1 rounded focus:outline-none focus:bg-white ${errors.firstName ? 'border border-red-500' : 'border border-gray-200'}` }
+                  className={`w-1/3 me-1 rounded focus:outline-none focus:bg-white ${errors.firstName ? 'border border-red-500' : 'border border-gray-200'}` }
+                />
+                <input 
+                  type="text" 
+                  placeholder="Middle" 
+                  name="middleName"
+                  value={formData.middleName}
+                  onChange={handleChange}
+                  className={`w-1/3 me-1 rounded focus:outline-none focus:bg-white ${errors.middle ? 'border border-red-500' : 'border border-gray-200'}` }
                 />
                 <input 
                   type="text" 
@@ -119,7 +128,7 @@ function RegisterPage() {
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleChange}
-                  className={`w-1/2 me-1 rounded focus:outline-none focus:bg-white ${errors.lastName ? 'border border-red-500' : 'border border-gray-200'}` }
+                  className={`w-1/3 me-1 rounded focus:outline-none focus:bg-white ${errors.lastName ? 'border border-red-500' : 'border border-gray-200'}` }
                 />
               </div>
             </div>
