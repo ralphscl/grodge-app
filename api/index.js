@@ -18,7 +18,10 @@ app.use(cors({
 mongoose.connect(process.env.MONGODB_URL);
 
 const userController = require('./controllers/UserController');
+const SubscribeController = require('./controllers/SubscribeController');
+
 app.use('/', userController);
+app.use('/newsletter', SubscribeController);
 
 app.get('/test', (req, res) => {
   res.json('Connected!');

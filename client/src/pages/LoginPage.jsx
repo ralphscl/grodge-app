@@ -57,7 +57,7 @@ const LoginPage = () => {
         })
         
         setUser({
-          id: data._id,
+          _id: data._id,
           name: data.userDetails.name,
           email: data.userAccount.email,
         });

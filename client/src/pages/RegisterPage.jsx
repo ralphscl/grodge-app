@@ -54,6 +54,18 @@ function RegisterPage() {
     try {
 
       if(Object.keys(errorFields).length === 0) {
+        
+        // Check if current email is subscribed to newsletter
+        const subscribed = await axios.get(`/newsletter/subscription?email=${formData.email}`);
+
+        // Add email to newsletter subscription
+        if (!subscribed.data) {
+          await axios.post('newsletter/subscribe', {
+            email: formData.email,
+          });
+        }
+
+        // Register email
         await axios.post('/register', {
           name: {
             first: formData.firstName,
@@ -67,6 +79,7 @@ function RegisterPage() {
           agreement: {},
           dateCreated: new Date().getTime().toString(),
         });
+
         dispatch({ type: 'FORM_SUCCESS' });
         alert('Register sucessful. Now you can login');
 

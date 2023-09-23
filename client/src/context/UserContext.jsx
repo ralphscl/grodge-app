@@ -9,6 +9,7 @@ export function UserContextProvider({ children }) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
+    
     if(!user) {
       axios.get('/authenticate').then(({data}) => {
         setUser(data);
