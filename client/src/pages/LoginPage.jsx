@@ -1,5 +1,5 @@
 import { useState, useReducer, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 // Package
 import axios from "axios";
 // Contexts
@@ -13,9 +13,14 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
   
+  const { user, ready } = useContext(UserContext);
   const [formData, dispatch] = useReducer(formReducer, userInitial);
   const [errors, setErrors] = useState({});
 
+
+  if(ready && user) {
+    return <Navigate to={'/'} />
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -87,8 +92,7 @@ const LoginPage = () => {
             value={formData.email}
             onChange={handleChange}
             className={`
-              w-1/2 me-1 rounded 
-              focus:outline-none 
+              w-1/2 me-1 
               focus:bg-white 
               ${errors.email ? 'border border-red-500' : 'border border-gray-200'}
             `}
@@ -101,8 +105,7 @@ const LoginPage = () => {
             value={formData.password}
             onChange={handleChange}
             className={`
-              w-1/2 me-1 rounded 
-              focus:outline-none 
+              w-1/2 me-1
               focus:bg-white 
               ${errors.password ? 'border border-red-500' : 'border border-gray-200'}
             `}

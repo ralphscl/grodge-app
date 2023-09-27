@@ -14,7 +14,7 @@ import { ReactComponent as Profile } from '../../assets/svg/user.svg';
 import { ReactComponent as Search } from '../../assets/svg/magnifying.svg';
 
 const Header = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
 
   const onLogout = async () => {

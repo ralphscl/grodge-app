@@ -46,8 +46,7 @@ const AccountDashboard = ({userId, email}) => {
   if(loading) {
     return <p className='text-center'>Loading...</p>
   }
-
-  console.log(formData)
+  
   return (
     <>
       <h2 className='mb-2 text-xl font-bold font-sans text-gray-600'>

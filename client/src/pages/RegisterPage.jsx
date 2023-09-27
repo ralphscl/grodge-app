@@ -1,9 +1,13 @@
-import { useReducer, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext, useReducer, useState } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 // Package
 import axios from "axios";
+// Context
+import { UserContext } from "../context/UserContext";
 // Reducer
 import { userInitial, formReducer } from "../reducers/AccountReducer";
+// Utils
+import { dateToEpoch } from "../utils/DateUtils";
 // Validation
 import { validationRules } from "../validations/AccountValidation";
 // Data
@@ -12,9 +16,13 @@ import { gender } from "../data/optionData.jsx";
 function RegisterPage() {
   const navigate = useNavigate();
 
+  const { user, ready } = useContext(UserContext);
   const [formData, dispatch] = useReducer(formReducer, userInitial);
   const [errors, setErrors] = useState({});
 
+  if(ready && user) {
+    return <Navigate to={'/'} />
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,10 +54,6 @@ function RegisterPage() {
 
   const createUser = async (errorFields) => {
     dispatch({ type: 'FORM_LOADING' });
-
-    // Construct a date string in the format "YYYY-MM-DD"
-    const dateObject = new Date(formData.birthdate);
-    const epochTimestamp = dateObject.getTime();
     
     try {
 
@@ -72,7 +76,7 @@ function RegisterPage() {
             middle: formData.middleName,
             last: formData.lastName
           },
-          birthdate: epochTimestamp.toString(),
+          birthdate: dateToEpoch(formData.birthdate),
           gender: formData.gender,
           contact: formData.contact,
           email: formData.email,
@@ -112,7 +116,7 @@ function RegisterPage() {
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleChange}
-                  className={`w-1/3 me-1 rounded focus:outline-none focus:bg-white ${errors.firstName ? 'border border-red-500' : 'border border-gray-200'}` }
+                  className={`w-1/3 me-1  focus:bg-white ${errors.firstName ? 'border border-red-500' : 'border border-gray-200'}` }
                 />
                 <input 
                   type="text" 
@@ -120,7 +124,7 @@ function RegisterPage() {
                   name="middleName"
                   value={formData.middleName}
                   onChange={handleChange}
-                  className={`w-1/3 me-1 rounded focus:outline-none focus:bg-white ${errors.middle ? 'border border-red-500' : 'border border-gray-200'}` }
+                  className={`w-1/3 me-1  focus:bg-white ${errors.middle ? 'border border-red-500' : 'border border-gray-200'}` }
                 />
                 <input 
                   type="text" 
@@ -128,7 +132,7 @@ function RegisterPage() {
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleChange}
-                  className={`w-1/3 me-1 rounded focus:outline-none focus:bg-white ${errors.lastName ? 'border border-red-500' : 'border border-gray-200'}` }
+                  className={`w-1/3 me-1 focus:bg-white ${errors.lastName ? 'border border-red-500' : 'border border-gray-200'}` }
                 />
               </div>
             </div>
@@ -145,7 +149,7 @@ function RegisterPage() {
                   name="birthdate"
                   value={formData.birthdate}
                   onChange={handleChange}
-                  className={`rounded focus:outline-none focus:bg-white ${errors.firstName ? 'border border-red-500' : 'border border-gray-200'}` }
+                  className={` focus:bg-white ${errors.firstName ? 'border border-red-500' : 'border border-gray-200'}` }
                 />
               </div>
               
@@ -155,7 +159,7 @@ function RegisterPage() {
                   value={formData.gender}
                   name="gender"
                   onChange={handleChange}
-                  className={`mt-2 rounded focus:outline-none focus:bg-white ${errors.gender ? 'border border-red-500' : 'border border-gray-200'}` }
+                  className={`mt-2  focus:bg-white ${errors.gender ? 'border border-red-500' : 'border border-gray-200'}` }
                 >
                   <option value="">Select an option</option>
                   {gender.map(item => {
@@ -177,7 +181,7 @@ function RegisterPage() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className={`w-1/2 me-1 rounded focus:outline-none focus:bg-white ${errors.email ? 'border border-red-500' : 'border border-gray-200'}` }
+                className={`w-1/2 me-1  focus:bg-white ${errors.email ? 'border border-red-500' : 'border border-gray-200'}` }
               />
             </div>
 
@@ -189,7 +193,7 @@ function RegisterPage() {
                 name="contact"
                 value={formData.contact}
                 onChange={handleChange}
-                className={`w-1/2 me-1 rounded focus:outline-none focus:bg-white ${errors.contact ? 'border border-red-500' : 'border border-gray-200'}` }
+                className={`w-1/2 me-1  focus:bg-white ${errors.contact ? 'border border-red-500' : 'border border-gray-200'}` }
                 />
             </div>
           </div>
@@ -204,7 +208,7 @@ function RegisterPage() {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className={`w-1/2 me-1 rounded focus:outline-none focus:bg-white ${errors.password ? 'border border-red-500' : 'border border-gray-200'}` }
+                className={`w-1/2 me-1  focus:bg-white ${errors.password ? 'border border-red-500' : 'border border-gray-200'}` }
               />
               <input
                 type="password" 
@@ -212,7 +216,7 @@ function RegisterPage() {
                 name="confirmPassword"
                 value={formData.confirmPassword}
                 onChange={handleChange}
-                className={`w-1/2 me-1 rounded focus:outline-none focus:bg-white ${errors.password ? 'border border-red-500' : 'border border-gray-200'}` }
+                className={`w-1/2 me-1  focus:bg-white ${errors.password ? 'border border-red-500' : 'border border-gray-200'}` }
               />
             </div>
           </div>

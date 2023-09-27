@@ -16,7 +16,8 @@ select {
     @apply
     w-full h-10
     my-2 py-2 px-3
-    border rounded-md
+    border rounded-sm
+    focus:outline-none
     disabled:bg-slate-50 
     disabled:text-slate-500 
     disabled:border-slate-200 
