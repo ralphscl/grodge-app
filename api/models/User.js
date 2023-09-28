@@ -10,14 +10,15 @@ const UserSchema = new Schema({
             last: String,
         },
         gender: String,
-        birthdate: String,
+        birthdate: Date,
         contact: {type: String, unique: true},
-        dateCreated: String,
+        dateCreated: {type: Date, default: Date()},
         agreement: {type: mongoose.Schema.Types.Mixed, default: {}}
     },
     userAccount: {
         email: {type: String, unique: true},
         password: String,
+        lastLogin: {type: Date, default: null}
     }
 });
 

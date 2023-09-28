@@ -6,8 +6,6 @@ import axios from "axios";
 import { UserContext } from "../context/UserContext";
 // Reducer
 import { userInitial, formReducer } from "../reducers/AccountReducer";
-// Utils
-import { dateToEpoch } from "../utils/DateUtils";
 // Validation
 import { validationRules } from "../validations/AccountValidation";
 // Data
@@ -76,13 +74,12 @@ function RegisterPage() {
             middle: formData.middleName,
             last: formData.lastName
           },
-          birthdate: dateToEpoch(formData.birthdate),
+          birthdate: new Date(formData.birthdate),
           gender: formData.gender,
           contact: formData.contact,
           email: formData.email,
           password: formData.password,
-          agreement: {},
-          dateCreated: new Date().getTime().toString()
+          dateCreated: new Date()
         });
 
         dispatch({ type: 'FORM_SUCCESS' });

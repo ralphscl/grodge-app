@@ -10,7 +10,7 @@ import AccountDashboard from "./account/AccountDashboard";
 import AccountInformation from "./account/AccountInformation";
 
 const AccountPage = () => {
-  const { user, ready } = useContext(UserContext)
+  const { user, ready } = useContext(UserContext);
   const { subpage } = useParams();
   
   if(!ready) {

@@ -73,6 +73,7 @@ const AccountDashboard = ({userId, email}) => {
             Edit
           </button>
         </div>
+        
         {/* Newsletter Subscription */}
         <div className='w-1/2'>
           <h1 className='my-4 text-md font-bold font-sans'>NEWSLETTER SUBSCRIPTION</h1>
@@ -99,6 +100,7 @@ const AccountDashboard = ({userId, email}) => {
             Edit
           </button>
         </div>
+
         {/* Shipping Address */}
         <div className='w-1/2'>
           <h2 className='my-4 text-md font-bold font-sans'>DEFAULT SHIPPING ADDRESSS</h2>
