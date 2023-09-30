@@ -3,7 +3,7 @@ import Carousel from "../components/carousel/Carousel";
 const HomePage = () => {
   return (
     <>
-      <Carousel />
+      <Carousel delay={8000}/>
     </>
   );
 }

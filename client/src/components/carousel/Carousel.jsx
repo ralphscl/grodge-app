@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
-import carouselData from "../../data/carouselData";
+import PropTypes from 'prop-types';
+// Components
 import CarouselContent from "./CarouselContent";
 import Arrows from "./Arrows";
 import Dots from "./Dots";
+// Data
+import carouselData from "../../data/carouselData";
 
 const carouselLength = carouselData.length - 1
 
-const Carousel = () => {
+const Carousel = ({ delay = 5000 }) => {
     const [activeIndex, setActiveIndex] = useState(0);
 
     useEffect(() => {
         const interval = setInterval(() => {
             console.log(activeIndex)
             setActiveIndex(activeIndex === carouselLength ? 0 : activeIndex + 1);
-        }, 5000);
+        }, delay);
         return () => clearInterval(interval);
     }, [activeIndex])
 
@@ -27,6 +30,10 @@ const Carousel = () => {
             <Dots activeIndex={activeIndex} carouselData={carouselData} onClick={(activeIndex) => setActiveIndex(activeIndex)}/>
         </div>
     )
+}
+
+Carousel.propTypes = {
+    delay: {type: PropTypes.number }
 }
 
 export default Carousel;

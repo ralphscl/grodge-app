@@ -22,8 +22,8 @@ export default [
         description:'Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident',
         url: gadgets,
         style: {
-            title: defaultStyle.title + 'left-[55rem] top-[10rem]',
-            desc: defaultStyle.desc + 'w-[38rem] left-[55rem] top-[13rem]'
+            title: defaultStyle.title + 'left-[55rem] top-[7rem]',
+            desc: defaultStyle.desc + 'w-[38rem] left-[55rem] top-[10rem]'
         }
     }, {
         title: 'START SHOPPING ONLINE!',
