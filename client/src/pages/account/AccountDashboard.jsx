@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 // Packages
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const AccountDashboard = ({userId, email}) => {
   const [formData, setFormData] = useState({});
@@ -65,9 +66,11 @@ const AccountDashboard = ({userId, email}) => {
           <p>{`${formData.userDetails.name.first} ${formData.userDetails.name.last}`}</p>
           <p>{formData.userAccount.email}</p>
 
-          <button className='my-2 me-2 py-1 px-4 border rounded-full inline border-black-custom hover:bg-accent-secondary hover:border-accent-secondary hover:text-white-custom'>
-            Change Password
-          </button>
+          <Link to="/account/information/change-password">
+            <button className='my-2 me-2 py-1 px-4 border rounded-full inline border-black-custom hover:bg-accent-secondary hover:border-accent-secondary hover:text-white-custom'>
+              Change Password
+            </button>
+          </Link>
 
           <button className='my-2 ms-2 py-1 px-4 border rounded-full inline bg-accent-primary border-accent-primary text-white-custom hover:bg-accent-secondary  hover:border-accent-secondary'>
             Edit

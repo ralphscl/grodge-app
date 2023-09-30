@@ -159,9 +159,7 @@ function RegisterPage() {
                   className={`mt-2  focus:bg-white ${errors.gender ? 'border border-red-500' : 'border border-gray-200'}` }
                 >
                   <option value="">Select an option</option>
-                  {gender.map(item => {
-                    return <option key={item.value} value={item.value}>{item.text}</option>
-                  })}
+                  {gender.map(item => <option key={item.value} value={item.value}>{item.text}</option> )}
                 </select>
               </div>
                 

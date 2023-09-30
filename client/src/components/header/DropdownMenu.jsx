@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 // Data
-import { userMenu } from '../data/navData.jsx';
+import { userMenu } from '../../data/navData.jsx';
 
 const NavMenu = ({ trigger, user, onLogout }) => {
   const [isOpen, setIsOpen] = useState(false);

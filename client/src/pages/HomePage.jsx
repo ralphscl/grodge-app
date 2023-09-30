@@ -1,8 +1,10 @@
+import Carousel from "../components/carousel/Carousel";
+
 const HomePage = () => {
   return (
-    <div>
-      Index page here
-    </div>
+    <>
+      <Carousel />
+    </>
   );
 }
 

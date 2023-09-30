@@ -69,6 +69,13 @@ router.get('/authenticate', async (req, res) => {
       if(err) throw err;
       
       const {userDetails, userAccount, _id} = await User.findById(payload.id);
+
+      // Update lastLogin in the users collection based on _id
+      await User.updateOne(
+        { _id: _id },
+        { $set: { 'userAccount.lastLogin': new Date() } }
+      );
+
       res.json({
         _id, 
         email: userAccount.email,

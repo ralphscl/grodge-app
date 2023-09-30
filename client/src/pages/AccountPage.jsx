@@ -1,10 +1,9 @@
 import { useContext } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 // Context
 import { UserContext } from "../context/UserContext";
 // Data
 import { userMenu } from "../data/navData";
-import NavRouter from "../components/NavRouter";
 // Component
 import AccountDashboard from "./account/AccountDashboard";
 import AccountInformation from "./account/AccountInformation";
@@ -37,7 +36,7 @@ const AccountPage = () => {
         <h1 className='mx-2 mt-4 text-2xl font-bold text-black-custom'>My Account</h1>
         <hr className='w-16 h-1 mt-1 mb-4 bg-black' />
         {userMenu.map(({label, value, target}) => {
-          return <NavRouter key={label} component={<p className={setNavClass(value.toLowerCase())}> {label}</p>} target={target}/>;
+          return <Link key={label} to={target}> <p className={setNavClass(value.toLowerCase())}> {label}</p> </Link>
         })}
       </nav>
 
