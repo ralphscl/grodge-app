@@ -1,22 +1,27 @@
 import PropTypes from 'prop-types';
 
-const Card = ({ background, text }) => {
+const Card = ({ cardHeight, button, background, backgroundHeight, text }) => {
   return (
-    <div className='w-full h-64 md:h-64 lg:h-80 mb-4 relative overflow-hidden'>
+    <div className={`w-full mb-4 relative overflow-hidden group ${cardHeight}`}>
       <img
-        className='w-full h-64 md:h-full lg:h-[22rem] object-cover hover:scale-110 transition duration-500 cursor-pointer'
+        className={`w-full object-cover group-hover:scale-110 transition duration-500 cursor-pointer ${backgroundHeight}`}
         src={background}
         alt='Fashion Background'
       />
-      <button className='py-1 px-2 absolute text-black-custom text-base font-bold bottom-2 md:bottom-4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-slate-100'>
-        {text}
-      </button>
+      {button && (
+        <button className='py-2 px-6 absolute text-black-custom text-base font-bold bottom-2 md:bottom-4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-slate-100 hover:bg-slate-300'>
+          {text}
+        </button>
+      )}
     </div>
   );
 };
 
 Card.propTypes = {
+  cardHeight: PropTypes.string,
+  button: PropTypes.bool,
   background: PropTypes.string,
+  backgroundHeight: PropTypes.string,
   text: PropTypes.string,
   height: PropTypes.string,
 }
