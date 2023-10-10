@@ -7,7 +7,7 @@ const CarouselContent = ({ activeIndex, carouselData}) => {
                 return (
                     <div
                         key={index}
-                        className={index === activeIndex ? 'w-screen h-[74vh] relative inline-block' : 'hidden'}
+                        className={index === activeIndex ? 'w-screen h-96 md:h-[74vh] relative inline-block' : 'hidden'}
                     >
                         <img className='h-full w-full absolute object-cover ' src={carousel.url} alt={carousel.title} />
                         <h2 className={carousel.style.title}>{carousel.title}</h2>

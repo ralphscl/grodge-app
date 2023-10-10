@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 
 const Card = ({ background, text }) => {
   return (
-    <div className='w-full h-64 md:h-64 lg:h-80 mb-6 md:mb-8 relative overflow-hidden'>
+    <div className='w-full h-64 md:h-64 lg:h-80 mb-4 relative overflow-hidden'>
       <img
-        className='w-full md:h-full object-cover hover:scale-110 transition duration-500 cursor-pointer'
+        className='w-full h-64 md:h-full lg:h-[22rem] object-cover hover:scale-110 transition duration-500 cursor-pointer'
         src={background}
         alt='Fashion Background'
       />
