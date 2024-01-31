@@ -26,9 +26,9 @@ export const navLinks = [
 ];
 
 /**
- * User Menu
+ * Account Dashboard Menu
  */
-export const userMenu = [
+export const accountMenu = [
   {
     label: 'Account Dashboard',
     value: 'account',
@@ -58,5 +58,23 @@ export const userMenu = [
     value: 'newsletter',
     component: '',
     target: '/account/newsletter'
+  }
+];
+
+/**
+ * Product Dashboard Menu
+ */
+export const productMenu = [
+  {
+    label: 'Product Dashboard',
+    value: 'product',
+    component: '',
+    target: '/product'
+  },
+  {
+    label: 'Manage Products',
+    value: 'product',
+    component: '',
+    target: '/product/manage'
   }
 ];

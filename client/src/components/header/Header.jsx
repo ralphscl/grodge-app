@@ -6,7 +6,7 @@ import DropdownMenu from './DropdownMenu';
 // Context
 import { UserContext } from '../../context/UserContext';
 // Data
-import { navLinks, userMenu } from '../../data/navData.jsx';
+import { navLinks, accountMenu } from '../../data/navData.jsx';
 // Asset
 import grodgeLogoBlack from '../../assets/png/grodge-text-black-transparent.png';
 import { ReactComponent as Profile } from '../../assets/svg/user.svg';
@@ -40,7 +40,7 @@ const Header = () => {
       <div className="w-4/12 flex justify-end items-center gap-4 navbar-icons ">
         <Search />
 
-        {userMenu.slice(2,4).map(({component, target}, index) => {
+        {accountMenu.slice(2,4).map(({component, target}, index) => {
           return <Link key={index} to={target}> {component} </Link>
         })}
         

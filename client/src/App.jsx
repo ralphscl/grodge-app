@@ -9,6 +9,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/HomePage';
 import AccountPage from './pages/AccountPage';
+import ProductPage from './pages/ProductPage';
 // CSS
 import './App.css'
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path='/account/:subpage?/:action?' element={<AccountPage />} />
+          <Route path='/product' element={<ProductPage />} />
         </Route>
         
         <Route path='/login' element={<LoginPage />} />
