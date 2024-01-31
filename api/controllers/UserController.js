@@ -6,6 +6,9 @@ const jwt = require('jsonwebtoken');
 // Models
 const User = require('../models/User.js');
 
+// User Types
+const DEFAULT_ROLE = 'user';
+
 const router = express.Router();
 const bcryptjsSalt = bcryptjs.genSaltSync(10);
 const jwtSecret = '87784y3ueri3j2ou83hbegqwy78ud';
@@ -24,6 +27,8 @@ router.post('/register', async (req, res) => {
         dateCreated,
       },
       userAccount: {
+        status: true,
+        role: DEFAULT_ROLE,
         email,
         password: bcryptjs.hashSync(password, bcryptjsSalt),
       }
