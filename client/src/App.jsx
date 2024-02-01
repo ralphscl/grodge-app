@@ -24,7 +24,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path='/account/:subpage?/:action?' element={<AccountPage />} />
-          <Route path='/product' element={<ProductPage />} />
+          <Route path='/product/:subpage?' element={<ProductPage />} />
         </Route>
         
         <Route path='/login' element={<LoginPage />} />

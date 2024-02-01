@@ -5,8 +5,8 @@ import { UserContext } from "../context/UserContext";
 // Data
 import { productMenu } from "../data/navData";
 // Component
-import AccountDashboard from "./account/AccountDashboard";
-import AccountInformation from "./account/AccountInformation";
+import ProductDashboard from "./product/ProductDashboard";
+import ProductManager from "./product/ProductManager";
 
 const ProductPage = () => {
   const { user, ready } = useContext(UserContext);
@@ -20,7 +20,6 @@ const ProductPage = () => {
     return <Navigate to={'/login'} />
   }
 
-
   const setNavClass = (type) => {
     let classes = 'sidenav-links';
     if(type === subpage || (subpage === undefined && type === 'account')) {
@@ -31,19 +30,29 @@ const ProductPage = () => {
   }
   
   return (
-    <div className='flex gap-4'>
-      <nav className='w-3/12 h-96 p-4 ms-20'>
-        <h1 className='mx-2 mt-4 text-2xl font-bold text-black-custom'>My Account</h1>
-        <hr className='w-16 h-1 mt-1 mb-4 bg-black' />
-        {productMenu.map(({label, value, target}) => {
-          return <Link key={label} to={target}> <p className={setNavClass(value.toLowerCase())}> {label}</p> </Link>
-        })}
-      </nav>
+    <>
+    <div className='flex flex-col md:flex-row gap-4'>
+      <div className='md:w-3/12 md:ms-6 lg:ms-20'>
+        <nav className='h-96 p-4'>
+          <h1 className='mx-2 mt-4 text-2xl font-bold text-black-custom'>Products</h1>
+          <hr className='w-16 h-1 mt-1 mb-4 bg-black' />
+          {productMenu.map(({label, value, target}) => {
+            return <Link key={label} to={target}> <p className={setNavClass(value.toLowerCase())}> {label}</p> </Link>
+          })}
+        </nav>
+      </div>
 
-      <section className='w-9/12 h-auto6 px-4 my-8 me-20'>
-        
-      </section>
+      <div className='md:w-9/12 md:me-6 lg:me-20'>
+        <section className='h-auto6 px-4 my-8'>
+          {subpage == undefined ?
+            <ProductDashboard /> 
+          : subpage == 'manage' ?
+            <ProductManager />
+          : 'content'}
+        </section>
+      </div>
     </div>
+    </>
   )
 }
 

@@ -13,6 +13,9 @@ const productSchema = mongoose.Schema({
     images: [String],
 });
 
+// image by url or upload
+// has multiple variation
+
 const ProductModel = mongoose.model('Product', {productSchema});
 
 module.exports = ProductModel;
