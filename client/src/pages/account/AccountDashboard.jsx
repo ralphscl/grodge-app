@@ -59,9 +59,9 @@ const AccountDashboard = ({userId, email}) => {
       </p>
       <hr className='mt-4 mb-8' />
 
-      <div className='flex h-3/6 mb-2'>
+      <div className='h-3/6 mb-2 flex flex-col md:flex-row gap-4'>
         {/* Account Information */}
-        <div className='w-1/2'>
+        <div className='w-full mx-6 md:w-1/2'>
           <h2 className='my-4 text-md font-bold font-sans'>CONTACT INFORMATION</h2>
           <p>{`${formData.userDetails.name.first} ${formData.userDetails.name.last}`}</p>
           <p>{formData.userAccount.email}</p>
@@ -78,7 +78,7 @@ const AccountDashboard = ({userId, email}) => {
         </div>
         
         {/* Newsletter Subscription */}
-        <div className='w-1/2'>
+        <div className='w-full mx-6 md:w-1/2'>
           <h1 className='my-4 text-md font-bold font-sans'>NEWSLETTER SUBSCRIPTION</h1>
           <p>You are currently {formData.newsletterSubscription ? 'subcribed' : 'not subscribe'} to <br/>Grodge Newsletter.</p>
 
@@ -88,10 +88,10 @@ const AccountDashboard = ({userId, email}) => {
         </div>
       </div>
 
-      <h2 className='my-1 text-lg font-bold font-sans'>ADDRESS BOOK</h2>
-      <div className='flex h-3/6 mb-2'>
+      <h2 className='my-1 text-lg font-bold font-sans hidden md:block'>ADDRESS BOOK</h2>
+      <div className='h-3/6 mb-2 flex flex-col md:flex-row gap-4'>
         {/* Biling Address */}
-        <div className='w-1/2'>
+        <div className='w-full mx-6 md:w-1/2'>
           <h2 className='my-4 text-md font-bold font-sans'>DEFAULT BILLING ADDRESSS</h2>
           <p>You have not set a default billing address.</p>
 
@@ -105,7 +105,7 @@ const AccountDashboard = ({userId, email}) => {
         </div>
 
         {/* Shipping Address */}
-        <div className='w-1/2'>
+        <div className='w-full mx-6 md:w-1/2'>
           <h2 className='my-4 text-md font-bold font-sans'>DEFAULT SHIPPING ADDRESSS</h2>
           <p>You have not set a default billing address.</p>
 

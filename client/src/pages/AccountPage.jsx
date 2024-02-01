@@ -31,22 +31,26 @@ const AccountPage = () => {
   }
   
   return (
-    <div className='flex gap-4'>
-      <nav className='w-3/12 h-96 p-4 ms-20'>
-        <h1 className='mx-2 mt-4 text-2xl font-bold text-black-custom'>My Account</h1>
-        <hr className='w-16 h-1 mt-1 mb-4 bg-black' />
-        {accountMenu.map(({label, value, target}) => {
-          return <Link key={label} to={target}> <p className={setNavClass(value.toLowerCase())}> {label}</p> </Link>
-        })}
-      </nav>
+    <div className='flex flex-col md:flex-row gap-4'>
+      <div className='md:w-3/12 md:ms-6 lg:ms-20'>  
+        <nav className='h-96 p-4'>
+          <h1 className='mx-2 mt-4 text-2xl font-bold text-black-custom'>My Account</h1>
+          <hr className='w-16 h-1 mt-1 mb-4 bg-black' />
+          {accountMenu.map(({label, value, target}) => {
+            return <Link key={label} to={target}> <p className={setNavClass(value.toLowerCase())}> {label}</p> </Link>
+          })}
+        </nav>
+      </div>
 
-      <section className='w-9/12 h-auto6 px-4 my-8 me-20'>
-        {subpage == undefined ? 
-          <AccountDashboard userId={user._id} email={user.email} /> 
-        : subpage == 'information' ?
-          <AccountInformation userId={user._id} />
-        : 'content'}
-      </section>
+      <div className='md:w-9/12 md:me-6 lg:me-20'>
+        <section className='h-auto px-4 my-8'>
+          {subpage == undefined ? 
+            <AccountDashboard userId={user._id} email={user.email} /> 
+          : subpage == 'information' ?
+            <AccountInformation userId={user._id} />
+          : 'content'}
+        </section>
+      </div>
     </div>
   )
 }
