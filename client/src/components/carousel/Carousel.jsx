@@ -14,7 +14,6 @@ const Carousel = ({ delay = 5000 }) => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            console.log(activeIndex)
             setActiveIndex(activeIndex === carouselLength ? 0 : activeIndex + 1);
         }, delay);
         return () => clearInterval(interval);
