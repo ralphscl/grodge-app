@@ -1,5 +1,5 @@
 // Components
-import Card from "../card/Card";
+import CategoryCard from "../card/CategoryCard";
 // Data
 import { category } from '../../data/previewData.jsx' ;
 
@@ -7,8 +7,8 @@ const CategoryPreview = () => {
   return (
     <section className='my-20 mx-8 md:mx-16 lg:mx-32 xl:mx-44 flex flex-col md:flex-row gap-4 text-center'>
       <div className='w-full md:w-1/2 lg:w-1/5'>
-        <Card cardHeight={'h-64 md:h-64 lg:h-80 '} button={true} background={category[1].image} backgroundHeight={'h-64 md:h-full lg:h-[22rem]'} text={category[1].header} />
-        <Card cardHeight={'h-64 md:h-64 lg:h-80 '} button={true} background={category[2].image} backgroundHeight={'h-64 md:h-full lg:h-[22rem]'} text={category[2].header} />
+        <CategoryCard cardHeight={'h-64 md:h-64 lg:h-80 '} button={true} background={category[1].image} backgroundHeight={'h-64 md:h-full lg:h-[22rem]'} text={category[1].header} />
+        <CategoryCard cardHeight={'h-64 md:h-64 lg:h-80 '} button={true} background={category[2].image} backgroundHeight={'h-64 md:h-full lg:h-[22rem]'} text={category[2].header} />
       </div>
       <div className='w-full md:w-1/2 lg:w-3/5'>
         <div className='w-full mb-4 relative overflow-hidden'>
@@ -23,8 +23,8 @@ const CategoryPreview = () => {
         </div>
       </div>
       <div className='w-full md:w-1/2 lg:w-1/5'>
-        <Card cardHeight={'h-64 md:h-64 lg:h-80 '} button={true} background={category[3].image} backgroundHeight={'h-64 md:h-full lg:h-[22rem]'} text={category[3].header} />
-        <Card cardHeight={'h-64 md:h-64 lg:h-80 '} button={true} background={category[4].image} backgroundHeight={'h-64 md:h-full lg:h-[22rem]'} text={category[4].header} />
+        <CategoryCard cardHeight={'h-64 md:h-64 lg:h-80 '} button={true} background={category[3].image} backgroundHeight={'h-64 md:h-full lg:h-[22rem]'} text={category[3].header} />
+        <CategoryCard cardHeight={'h-64 md:h-64 lg:h-80 '} button={true} background={category[4].image} backgroundHeight={'h-64 md:h-full lg:h-[22rem]'} text={category[4].header} />
       </div>
     </section>
   );
