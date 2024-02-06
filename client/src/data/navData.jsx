@@ -1,5 +1,5 @@
 // User Menu Icons
-import { ReactComponent as Account } from '..//assets/svg/user.svg';
+import { ReactComponent as Account } from '../assets/svg/user.svg';
 import { ReactComponent as ShoppingBag } from '../assets/svg/bag.svg';
 import { ReactComponent as WishList } from '../assets/svg/heart.svg';
 

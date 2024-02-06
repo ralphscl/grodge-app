@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const CategoryCard = ({ text, button, background, cardHeight, backgroundHeight }) => {
+const CategoryCard = ({ button, background, text, cardHeight, backgroundHeight }) => {
   return (
     <div className={`w-full mb-4 relative overflow-hidden group ${cardHeight}`}>
       <img
@@ -18,9 +18,9 @@ const CategoryCard = ({ text, button, background, cardHeight, backgroundHeight }
 };
 
 CategoryCard.propTypes = {
-  text: PropTypes.string,
   button: PropTypes.bool,
   background: PropTypes.string,
+  text: PropTypes.string,
   cardHeight: PropTypes.string,
   backgroundHeight: PropTypes.string,
 }

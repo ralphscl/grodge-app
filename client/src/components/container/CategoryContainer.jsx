@@ -5,7 +5,7 @@ import { category } from '../../data/previewData.jsx' ;
 
 const CategoryContainer = () => {
   return (
-    <section className='my-20 mx-8 md:mx-16 lg:mx-32 xl:mx-52 flex flex-col md:flex-row gap-4 text-center'>
+    <section className='my-10 mx-8 md:mx-16 lg:mx-32 xl:mx-52 flex flex-col md:flex-row gap-4 text-center'>
       <div className='w-full md:w-1/2 lg:w-1/5'>
         {category.slice(1, 3).map((item, index) => (
           <CategoryCard 
