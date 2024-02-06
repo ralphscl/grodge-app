@@ -1,11 +1,11 @@
 import Carousel from "../components/carousel/Carousel";
-import CategoryPreview from "../components/preview/CategoryPreview";
+import CategoryContainer from "../components/container/CategoryContainer";
 
 const HomePage = () => {
   return (
     <>
       <Carousel delay={8000}/>
-      <CategoryPreview />
+      <CategoryContainer />
     </>
   );
 }

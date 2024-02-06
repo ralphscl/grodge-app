@@ -4,7 +4,7 @@ const CategoryCard = ({ text, button, background, cardHeight, backgroundHeight }
   return (
     <div className={`w-full mb-4 relative overflow-hidden group ${cardHeight}`}>
       <img
-        className={`w-full object-cover group-hover:scale-110 transition duration-500 cursor-pointer ${backgroundHeight}`}
+        className={`w-full object-cover group-hover:scale-150 transition duration-500 cursor-pointer ${backgroundHeight}`}
         src={background}
         alt={`${text} Background`}
       />

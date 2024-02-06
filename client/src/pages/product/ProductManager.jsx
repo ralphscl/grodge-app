@@ -1,4 +1,4 @@
-const ProductManager = ({}) => {
+const ProductManager = () => {
 
   return (
     <>
