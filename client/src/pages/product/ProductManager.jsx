@@ -4,9 +4,9 @@ const ProductManager = () => {
     <>
       <div className="sm:flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <button className="py-2 px-8 rounded-full focus:outline-none bg-accent-primary text-white rounded-full">Available</button>
-          <button className="py-2 px-8 rounded-full focus:outline-none bg-accent-primary text-white rounded-full">Depleted</button>
-          <button className="py-2 px-8 rounded-full focus:outline-none bg-accent-primary text-white rounded-full">Removed</button>
+          <button className="py-2 px-8 rounded-full focus:outline-none bg-accent-primary text-white">Available</button>
+          <button className="py-2 px-8 rounded-full focus:outline-none bg-accent-primary text-white">Depleted</button>
+          <button className="py-2 px-8 rounded-full focus:outline-none bg-accent-primary text-white">Removed</button>
         </div>
       </div>
 
