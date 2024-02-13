@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 
-const CategoryCard = ({ button, background, text, cardHeight, backgroundHeight }) => {
+const CategoryCard = ({ button, background, text, cardStyle, bgStyle }) => {
   return (
-    <div className={`w-full mb-4 relative overflow-hidden group ${cardHeight}`}>
+    <div className={`w-full mb-4 relative overflow-hidden group ${cardStyle}`}>
       <img
-        className={`w-full object-cover group-hover:scale-150 transition duration-500 cursor-pointer ${backgroundHeight}`}
+        className={`w-full object-cover group-hover:scale-150 transition duration-500 cursor-pointer ${bgStyle}`}
         src={background}
         alt={`${text} Background`}
       />
@@ -21,8 +21,8 @@ CategoryCard.propTypes = {
   button: PropTypes.bool,
   background: PropTypes.string,
   text: PropTypes.string,
-  cardHeight: PropTypes.string,
-  backgroundHeight: PropTypes.string,
+  cardStyle: PropTypes.string,
+  bgStyle: PropTypes.string,
 }
 
 export default CategoryCard;

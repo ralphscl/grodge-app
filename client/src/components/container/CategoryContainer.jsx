@@ -13,8 +13,8 @@ const CategoryContainer = () => {
             button={true} 
             background={item.image} 
             text={item.header} 
-            cardHeight={'h-64 md:h-64 lg:h-80 '} 
-            backgroundHeight={'h-64 md:h-full lg:h-[22rem]'} 
+            cardStyle={'h-64 md:h-64 lg:h-80 '} 
+            bgStyle={'h-64 md:h-full lg:h-[22rem]'} 
           />
         ))}
       </div>
@@ -25,8 +25,8 @@ const CategoryContainer = () => {
             button={true} 
             background={item.image} 
             text={item.header} 
-            cardHeight={'h-64 md:h-full'} 
-            backgroundHeight={'h-64 md:h-[33rem] lg:h-[41rem] '} 
+            cardStyle={'h-64 md:h-full'} 
+            bgStyle={'h-64 md:h-[33rem] lg:h-[41rem] '} 
           />
         ))}
       </div>
@@ -37,8 +37,8 @@ const CategoryContainer = () => {
             button={true} 
             background={item.image} 
             text={item.header} 
-            cardHeight={'h-64 md:h-64 lg:h-80 '} 
-            backgroundHeight={'h-64 md:h-full lg:h-[22rem]'} 
+            cardStyle={'h-64 md:h-64 lg:h-80 '} 
+            bgStyle={'h-64 md:h-full lg:h-[22rem]'} 
           />
         ))}
       </div>
