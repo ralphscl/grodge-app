@@ -9,8 +9,8 @@ const PolicyCard = () => {
         <Account className="h-16 w-16" />
       </div>
       <div className="ms-2 md:ms-0 xl:ms-2 flex flex-col justify-center">
-        <h1 className="text-xl font-bold whitespace-nowrap">FREE SHIPPING</h1>
-        <h4 className="mt-2 whitespace-nowrap">On All Orders</h4>
+        <h1 className="text-xl font-bold whitespace-nowrap">LOREM IPSUM</h1>
+        <h4 className="mt-2 whitespace-nowrap">Consectetur Adipiscing Elit</h4>
       </div>
     </div>
   );

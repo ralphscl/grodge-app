@@ -4,9 +4,9 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 // Data
-import { gender } from '../../data/optionData';
+import { gender } from '../../../data/optionData';
 // Utils
-import { formatDate } from '../../utils/DateUtils';
+import { formatDate } from '../../../utils/DateUtils';
 
 const AccountInformation = ({userId}) => {
   const [formData, setFormData] = useState({});

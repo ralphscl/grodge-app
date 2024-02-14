@@ -7,9 +7,9 @@ import { UserContextProvider } from './context/UserContext';
 import Layout from './Layout';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import HomePage from './pages/HomePage';
-import AccountPage from './pages/AccountPage';
-import ProductPage from './pages/ProductPage';
+import HomePage from './pages/homepage/HomePage';
+import AccountPage from './pages/accountpage/AccountPage';
+import ProductPage from './pages/productpage/ProductPage';
 // CSS
 import './App.css'
 

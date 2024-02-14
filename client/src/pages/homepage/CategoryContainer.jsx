@@ -1,5 +1,5 @@
 // Components
-import CategoryCard from "../card/CategoryCard.jsx";
+import CategoryCard from "../../components/card/CategoryCard.jsx";
 // Data
 import { category } from '../../data/previewData.jsx' ;
 

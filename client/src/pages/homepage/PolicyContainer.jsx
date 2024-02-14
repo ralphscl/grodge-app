@@ -1,5 +1,5 @@
-import PolicyCard from "../card/PolicyCard";
-import ThreeColumn from "./ThreeColumn";
+import PolicyCard from "../../components/card/PolicyCard";
+import ThreeColumn from "../../components/container/ThreeColumn";
 
 const PolicyContainer = () => {
   return (
