@@ -1,18 +1,22 @@
-import Carousel from "../../components/carousel/Carousel";
-import CategoryContainer from "./CategoryContainer";
-import PolicyContainer from "./PolicyContainer";
-import ThreeColumn from "../../components/container/ThreeColumn";
+// Homepage Components
+import PolicyContainer from "./components/PolicyHighlights";
+import CategoryShowcase from "./components/CategoryShowcase";
+import LatestPostContainer from "./components/LatestPostContainer";
 
-import PolicyCard from "../../components/card/PolicyCard";
-import BlogCard from "../../components/card/BlogCard";
+// Global Components
+import Carousel from "../../components/carousel/Carousel";
 
 const HomePage = () => {
   return (
     <>
       <Carousel delay={8000}/>
-      <PolicyContainer />
-      <CategoryContainer />
-      <ThreeColumn component={<BlogCard />} array={[0,1,2]} />
+      <div className='px-8 md:px-4 lg:px-28 xl:px-60'>
+        <PolicyContainer />
+        <CategoryShowcase />
+      </div>
+      <div className='bg-gray-50 py-4 px-8 md:px-4 lg:px-28 xl:px-60'>
+        <LatestPostContainer />
+      </div>
     </>
   );
 }

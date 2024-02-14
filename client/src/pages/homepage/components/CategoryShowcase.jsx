@@ -1,11 +1,11 @@
 // Components
-import CategoryCard from "../../components/card/CategoryCard.jsx";
+import CategoryCard from "../../../components/card/CategoryCard.jsx";
 // Data
-import { category } from '../../data/previewData.jsx' ;
+import { category } from '../../../data/previewData.jsx' ;
 
-const CategoryContainer = () => {
+const CategoryShowcase = () => {
   return (
-    <section className='my-10 mx-8 md:mx-16 lg:mx-32 xl:mx-52 flex flex-col md:flex-row gap-4 text-center'>
+    <section className='my-10 flex flex-col md:flex-row gap-4 text-center'>
       <div className='w-full md:w-1/2 lg:w-1/5'>
         {category.slice(1, 3).map((item, index) => (
           <CategoryCard 
@@ -46,4 +46,4 @@ const CategoryContainer = () => {
   );
 };
 
-export default CategoryContainer;
+export default CategoryShowcase;
