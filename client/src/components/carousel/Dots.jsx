@@ -7,7 +7,7 @@ const Dots = ({ activeIndex, onClick, carouselData }) => {
                 return (
                     <span
                         key={index}
-                        className={`h-4 w-4 mx-1 rounded-[50%] inline-block bg-accent-primary opacity-50 cursor-pointer  ${activeIndex === index && 'opacity-100'}`}
+                        className={`h-4 w-4 mx-1 rounded-[50%] inline-block opacity-100 cursor-pointer ${activeIndex === index ? 'bg-accent-primary' : 'bg-white border border-accent-primary'}`}
                         onClick={() => onClick(index)}
                     ></span>
                 )
