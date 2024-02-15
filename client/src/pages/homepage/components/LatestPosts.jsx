@@ -1,7 +1,7 @@
 import BlogCard from "../../../components/card/BlogCard";
 import ThreeColumn from "../../../components/container/ThreeColumn";
 
-const LatestPostContainer = () => {
+const LatestPosts = () => {
   return (
     <>
       <h1 className='text-black-custom text-2xl font-bold'>Latest Posts</h1>
@@ -10,4 +10,4 @@ const LatestPostContainer = () => {
   );
 }
 
-export default LatestPostContainer;
+export default LatestPosts;

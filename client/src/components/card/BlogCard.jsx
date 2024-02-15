@@ -21,11 +21,7 @@ const BlogCard = () => {
 };
 
 BlogCard.propTypes = {
-  button: PropTypes.bool,
-  background: PropTypes.string,
-  text: PropTypes.string,
-  cardHeight: PropTypes.string,
-  backgroundHeight: PropTypes.string,
+  
 }
 
 export default BlogCard;
