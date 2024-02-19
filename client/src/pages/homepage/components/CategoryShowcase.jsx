@@ -18,7 +18,7 @@ const CategoryShowcase = () => {
           />
         ))}
       </div>
-      <div className='w-full md:w-1/2 lg:w-3/5'>
+      <div className='h-[41rem] w-full md:w-1/2 lg:w-3/5'>
         {category.slice(0, 1).map((item, index) => (
           <CategoryCard 
             key={index}
