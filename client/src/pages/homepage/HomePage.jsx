@@ -7,21 +7,32 @@ import LatestPosts from "./components/LatestPosts";
 import LatestProducts from "./components/LatestProducts";
 
 const HomePage = () => {
-  const homePageStyle = ' px-8 md:px-4 lg:px-28 xl:px-60'
+  // Common styling for the home page
+  const homePageStyles = 'px-8 md:px-4 lg:px-28 xl:px-60';
 
   return (
     <>
-      <Carousel delay={8000}/>
-      <div className={homePageStyle}>
-        <PolicyHighlights />
+      {/* Carousel Component */}
+      <Carousel delay={8000} />
+
+      {/* Main Content */}
+      <div className={homePageStyles}>
+        {/* Policy Highlights Component */}
+        <PolicyHighlights dataObj={[0,1,2]} />
+        
+        {/* Category Showcase Component */}
         <CategoryShowcase />
+        
+        {/* Latest Products Component */}
         <LatestProducts />
       </div>
-      <div className={`bg-gray-50 py-4 ${homePageStyle}`}>
-        <LatestPosts />
+
+      {/* Latest Posts Component */}
+      <div className={`bg-gray-50 mt-20 py-4 ${homePageStyles}`}>
+        <LatestPosts dataObj={[0,1,2]} />
       </div>
     </>
   );
-}
+};
 
 export default HomePage;
