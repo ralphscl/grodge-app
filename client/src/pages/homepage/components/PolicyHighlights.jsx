@@ -1,10 +1,10 @@
 import PolicyCard from "../../../components/card/PolicyCard";
 import ThreeColumn from "../../../components/container/ThreeColumn";
 
-const PolicyHighlights = ({ dataObj }) => {
+const PolicyHighlights = () => {
   return (
     <>
-      <ThreeColumn component={<PolicyCard />} dataObj={dataObj}/>
+      <ThreeColumn component={<PolicyCard />} dataObj={[0,1,2]}/>
     </>
   );
 }

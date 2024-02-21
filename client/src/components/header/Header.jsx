@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 // Components
-import DropdownMenu from './DropdownMenu';
+import DropdownMenu from './components/DropdownMenu';
 // Context
 import { UserContext } from '../../context/UserContext';
 // Data
@@ -45,11 +45,8 @@ const Header = () => {
         })}
         
         {!user ? 
-          <>
-            <Link key='login' to='/login'> <Profile /> </Link>
-          </>
+          <Link key='login' to='/login'> <Profile /> </Link>
           : 
-          <>
           <DropdownMenu 
             key='menu' 
             user={user}
@@ -58,7 +55,6 @@ const Header = () => {
               <Profile 
                 className='stroke-accent-primary hover:stroke-accent-secondary'/>
             } /> 
-          </>
         }
       </div>
     </nav>

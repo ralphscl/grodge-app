@@ -12,7 +12,10 @@ export default {
         'accent-tertiary': '#F0E4D8',
         
         'black-custom': '#2D2D2B',
-        'white-custom': '#F6F5F0'
+        'white-custom': '#F6F5F0',
+
+        'footer-primary': '#111111',
+        'footer-secondary': '#cccccc'
       }
     },
   },

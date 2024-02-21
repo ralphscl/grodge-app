@@ -8,7 +8,7 @@ import LatestProducts from "./components/LatestProducts";
 
 const HomePage = () => {
   // Common styling for the home page
-  const homePageStyles = 'px-8 md:px-4 lg:px-28 xl:px-60';
+  const homePageStyles = 'px-8 md:px-4 lg:px-28 xl:px-58 2xl:px-64';
 
   return (
     <>
@@ -18,7 +18,7 @@ const HomePage = () => {
       {/* Main Content */}
       <div className={homePageStyles}>
         {/* Policy Highlights Component */}
-        <PolicyHighlights dataObj={[0,1,2]} />
+        <PolicyHighlights />
         
         {/* Category Showcase Component */}
         <CategoryShowcase />
