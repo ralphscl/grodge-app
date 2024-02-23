@@ -30,11 +30,13 @@ const Copyright = ({ footerStyle }) => {
       <div className='w-full text-center'>
         &#169; No Copyright claims. Developed by Ralph for Personal only.
       </div>
+      
       <div className='w-full flex flex-row justify-center items-center gap-6 '>
         {socialIcons.map((social, index) => (
           <social.icon key={index} width="24px" height="24px" alt={social.alt} />
         ))}
       </div>
+
       <div className='w-full flex flex-row justify-center items-center gap-2'>
         {paymentOptionLogos.map((payment, index) => (
           <img key={index} src={payment.logo} alt={payment.alt} className='h-[30px] w-[60px] grayscale hover:grayscale-0' />

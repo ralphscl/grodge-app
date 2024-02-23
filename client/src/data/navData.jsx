@@ -14,14 +14,14 @@ export const navLinks = [
     link: 'Shop',
     target: '/shop'
   },{
-    link: 'Contact',
-    target: '/contact'
-  },{
     link: 'Blog',
     target: '/blog'
   },{
     link: 'About',
     target: '/about'
+  },{
+    link: 'Contact',
+    target: '/contact'
   },
 ];
 
