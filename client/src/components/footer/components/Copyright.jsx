@@ -12,19 +12,19 @@ import Mc from '../../../assets/png/payment-option-mastercard.png';
 
 const Copyright = ({ footerStyle }) => {
     return (
-      <div className={`h-20 py-9 flex flex-col md:flex-row gap-6 ${footerStyle}`}>
-        <div className='w-6/12'>
+      <div className={`h-auto py-9 flex flex-col md:flex-row gap-6 ${footerStyle}`}>
+        <div className='w-full text-center'>
           &#169; No Copyright claims. Developed by Ralph for Personal only.
         </div>
-        <div className='w-3/12 flex flex-row justify-center items-center gap-2 '>
-          <Facebook />
-          <Instagram />
-          <Twitter />
-          <LinkedIn />
-          <Pinterest />
-          <Youtube />
+        <div className='w-full flex flex-row justify-center items-center gap-6 '>
+          <Facebook width="24px" height="24px" />
+          <Instagram width="24px" height="24px" />
+          <Twitter width="24px" height="24px" />
+          <LinkedIn width="24px" height="24px" />
+          <Pinterest width="24px" height="24px" />
+          <Youtube width="24px" height="24px" />
         </div>
-        <div className='w-3/12 flex flex-row justify-center items-center gap-2'>
+        <div className='w-full flex flex-row justify-center items-center gap-2'>
           <img src={Amex} alt='mc-logo' className='h-[30px] w-[60px] grayscale hover:grayscale-0' />
           <img src={Visa} alt='visa-logo' className='h-[30px] w-[60px] grayscale hover:grayscale-0'  />
           <img src={Mc} alt='amex-logo' className='h-[30px] w-[60px] grayscale hover:grayscale-0' />
