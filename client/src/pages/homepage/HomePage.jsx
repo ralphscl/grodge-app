@@ -5,6 +5,7 @@ import PolicyHighlights from "./components/PolicyHighlights";
 import CategoryShowcase from "./components/CategoryShowcase";
 import LatestPosts from "./components/LatestPosts";
 import LatestProducts from "./components/LatestProducts";
+import Subscription from "./components/Subscription";
 
 const HomePage = () => {
   // Common styling for the home page
@@ -27,8 +28,10 @@ const HomePage = () => {
         <LatestProducts />
       </div>
 
+      <Subscription />
+
       {/* Latest Posts Component */}
-      <div className={`bg-gray-50 mt-20 py-4 ${homePageStyles}`}>
+      <div className={`bg-gray-50 py-4 ${homePageStyles}`}>
         <LatestPosts dataObj={[0,1,2]} />
       </div>
     </>
