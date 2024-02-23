@@ -1,9 +1,9 @@
 const Sitemap = ({ footerStyle }) => {
-    return (
-      <div className={`h-80 pt-20 pb-8 ${footerStyle}`}>
-        sitemap
-      </div>
-    );
-  }
+  return (
+    <div className={`h-auto py-9 flex flex-col md:flex-row gap-6 ${footerStyle}`}>
+      sitemap
+    </div>
+  );
+}
   
   export default Sitemap;
