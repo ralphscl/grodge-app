@@ -18,10 +18,10 @@ export const navLinks = [
     target: '/blog'
   },{
     link: 'About',
-    target: '/about'
+    target: '/about-us'
   },{
     link: 'Contact',
-    target: '/contact'
+    target: '/contact-us'
   },
 ];
 

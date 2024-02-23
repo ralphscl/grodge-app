@@ -10,6 +10,8 @@ import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/homepage/HomePage';
 import AccountPage from './pages/accountpage/AccountPage';
 import ProductPage from './pages/productpage/ProductPage';
+import AboutPage from './pages/aboutpage/AboutPage';
+import ContactPage from './pages/contactpage/ContactPage';
 // CSS
 import './App.css'
 
@@ -25,6 +27,9 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path='/account/:subpage?/:action?' element={<AccountPage />} />
           <Route path='/product/:subpage?' element={<ProductPage />} />
+          
+          <Route path='/about-us?' element={<AboutPage />} />
+          <Route path='/contact-us?' element={<ContactPage />} />
         </Route>
         
         <Route path='/login' element={<LoginPage />} />
