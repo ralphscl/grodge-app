@@ -4,7 +4,8 @@ const AboutPage = () => {
 
   return (
     <section>
-      <Banner page='About Us!' prevPage={[{page: 'Home', to: '/homepage' }]} />
+      <Banner page='About Us!' prevPage={[{page: 'Home', to: '/' }]} />
+      
     </section>
   );
 

@@ -10,9 +10,9 @@ const Banner = ({ page, prevPage }) => {
         <h1 className='text-black text-3xl font-bold py-2'> {page} </h1>
         <p className='text-black text-md font-semibold'> 
             {prevPage.map((link, index) => (
-                <>
-                    <Link key={index} to={link.to}>{link.page}</Link> &gt;
-                </>
+              <>
+                <Link key={index} to={link.to} className='hover:text-white hover:underline'>{link.page}</Link> &gt;
+              </>
             ))}
           <span className='text-black'> {page.split(' ')[0]} </span> 
         </p>
