@@ -23,6 +23,7 @@ const Sitemap = ({ footerStyle }) => {
           <p className='text-white py-2 text-md cursor-pointer'>Blog</p>
           <p className='text-white py-2 text-md cursor-pointer'>About</p>
           <p className='text-white py-2 text-md cursor-pointer'>Contact</p>
+          <p className='text-white py-2 text-md cursor-pointer'>Frequently Asked Questions</p>
           <p className='text-white py-2 text-md cursor-pointer'>Policies</p>
           <p className='text-white py-2 text-md cursor-pointer'>Terms of Use</p>
         </div>

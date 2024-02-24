@@ -6,6 +6,7 @@ nav svg {
     cursor-pointer
 
     hover:text-accent-primary
+    transition-colors duration-300
 }
 
 input[type="text"],
@@ -42,6 +43,7 @@ button.primary {
     rounded-2xl
 
     hover:bg-accent-secondary
+    transition-colors duration-300
 }
 
 h1 {
@@ -57,7 +59,8 @@ h1 {
     rounded-lg 
     cursor-pointer 
 
-    hover:text-accent-primary;
+    hover:text-accent-primary
+    transition-colors duration-300
 }
 
 .sidenav-links {

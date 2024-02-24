@@ -11,7 +11,7 @@ const Banner = ({ page, prevPage }) => {
         <p className='text-black text-md font-semibold'> 
             {prevPage.map((link, index) => (
               <>
-                <Link key={index} to={link.to} className='hover:text-white hover:underline'>{link.page}</Link> &gt;
+                <Link key={index} to={link.to} className='hover:text-white transition-colors duration-300'>{link.page}</Link> &gt;
               </>
             ))}
           <span className='text-black'> {page.split(' ')[0]} </span> 
